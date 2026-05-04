@@ -14,17 +14,16 @@ possible.
 ## Apps
 
 <ul class="app-list">
+{% assign apps = site.pages | where_exp: "p", "p.app_name" | sort: "order" %}
+{% for app in apps %}
   <li>
-    <a href="/taqwim/">Taqwim</a>
-    <span class="desc">Islamic calendar, prayer times, Qibla, Quran. Fully offline. <strong>Collects nothing.</strong></span>
+    <a href="{{ app.url | relative_url }}">{{ app.app_name }}</a>
+    <span class="desc">
+      {%- if app.app_subtitle -%}{{ app.app_subtitle }} · {% endif -%}
+      {{ app.data_collected | default: "See policy for data details." }}
+    </span>
   </li>
-  <!--
-  Add new entries here when launching a new app:
-  <li>
-    <a href="/wallet/">Wallet</a>
-    <span class="desc">Short description · what data it collects (or doesn't).</span>
-  </li>
-  -->
+{% endfor %}
 </ul>
 
 ## General

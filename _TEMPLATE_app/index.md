@@ -1,11 +1,21 @@
 ---
-# Copy this whole _TEMPLATE_app/ directory to <appname>/ when launching a
-# new app. Then update _config.yml to add a `defaults` block with the
-# new app_name / app_id / data_collected.
+# Copy this whole _TEMPLATE_app/ directory to <appname>/ when launching
+# a new app. Edit the frontmatter below + write the policy content.
+# Do NOT touch _config.yml or index.md — the landing page picks the
+# new app up automatically once you push.
+
+layout: app-policy
+permalink: /<appname>/                # ← change to /myapp/, must end with /
 title: "<App Name> — Privacy Policy"
 description: "Privacy policy for <App Name>."
-permalink: /<appname>/
 last_updated: 2026-01-01
+
+# Per-app metadata read by the layout + the landing page loop.
+app_name: <App Name>                  # ← what users see
+app_subtitle: One-line tagline        # ← optional
+app_id: com.tmkgroup.<appname>        # ← bundle ID
+data_collected: "Short one-line summary."   # ← shown on landing page
+order: 100                            # ← lower numbers appear first; pick any
 ---
 
 ## Summary

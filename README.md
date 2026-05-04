@@ -13,7 +13,7 @@ so the per-app pages stay focused on what's actually different.
 
 ```
 .
-├── _config.yml             ← Jekyll config + per-app defaults
+├── _config.yml             ← Jekyll config (small, doesn't grow per app)
 ├── CNAME                   ← privacy.tmkgroup.vn
 ├── _layouts/
 │   ├── default.html        ← header / footer
@@ -22,36 +22,35 @@ so the per-app pages stay focused on what's actually different.
 │   └── master-policy.md    ← shared TMK Group statement (one source of truth)
 ├── _TEMPLATE_app/          ← copy this folder when launching a new app
 │   └── index.md
-├── taqwim/index.md         ← Taqwim privacy policy
-├── index.md                ← landing page listing all app policies
+├── <app>/index.md          ← one folder per app — the only file you create
+├── index.md                ← landing page (auto-lists every app)
 ├── assets/style.css        ← minimal CSS
 └── README.md               ← this file
 ```
 
-## Add a new app
+## Add a new app — one file, one push
 
-1. Copy the template:
-   ```sh
-   cp -r _TEMPLATE_app newapp
-   ```
-2. Open `newapp/index.md`, set frontmatter (`title`, `description`,
-   `permalink: /newapp/`, `last_updated`), and fill in the sections.
-3. Add a defaults block to `_config.yml`:
-   ```yaml
-   - scope:
-       path: "newapp"
-     values:
-       layout: app-policy
-       app_name: NewApp
-       app_subtitle: One-line tagline
-       app_id: com.tmkgroup.newapp
-       data_collected: "Short summary."
-   ```
-4. Add a `<li>` entry to `index.md`.
-5. Commit and push. GitHub Pages rebuilds in 30-60 seconds.
+The whole workflow scales to dozens of apps without the config bloating:
 
-The app-specific page automatically gets the TMK Group master statement
-appended via the `app-policy` layout — no need to copy that text.
+```sh
+cp -r _TEMPLATE_app newapp
+# edit newapp/index.md only
+git add newapp && git commit -m "Add NewApp privacy policy" && git push
+```
+
+That is it. Concretely:
+
+1. Copy the template directory: `cp -r _TEMPLATE_app newapp`.
+2. Open `newapp/index.md`, replace every placeholder in the frontmatter
+   (`permalink`, `app_name`, `app_subtitle`, `app_id`,
+   `data_collected`, `order`), and write the policy body.
+3. Commit and push. GitHub Pages rebuilds in 30–60 seconds.
+
+The landing page (`/`) reads `app_name` from each page's frontmatter
+and automatically lists the new app — no need to edit `index.md`. The
+shared layout automatically appends the TMK Group master statement to
+the bottom of every app page — no need to copy boilerplate. `_config.yml`
+holds only one default (the layout for plain pages) and never grows.
 
 ## Local preview (optional)
 
