@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<article class="app-policy">
+  <p class="app-back"><a href="{{ '/' | relative_url }}">← All policies</a></p>
+
+  <header class="app-header">
+    <h1>{{ page.app_name }} — Privacy Policy</h1>
+    {% if page.app_subtitle %}<p class="app-subtitle">{{ page.app_subtitle }}</p>{% endif %}
+    <p class="app-meta">
+      <span>Bundle ID: <code>{{ page.app_id }}</code></span>
+      <span>Last updated: {{ page.last_updated | default: site.time | date: "%Y-%m-%d" }}</span>
+    </p>
+  </header>
+
+  {% if page.data_collected %}
+  <aside class="data-summary">
+    <strong>Data we collect:</strong> {{ page.data_collected }}
+  </aside>
+  {% endif %}
+
+  {{ content }}
+
+  <hr>
+
+  <section class="master-policy">
+    <h2 id="tmk-group-policy">TMK Group — General Privacy Statement</h2>
+    {% include master-policy.md %}
+  </section>
+</article>
