@@ -1,0 +1,9 @@
+# Jekyll build output (Cloudflare Pages builds this from source)
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler
+.bundle/
+vendor/
+Gemfile.lock
