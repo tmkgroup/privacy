@@ -1,8 +1,16 @@
 ---
+layout: app-policy
+permalink: /taqwim/
 title: Taqwim — Privacy Policy
 description: Privacy policy for Taqwim, the privacy-first Islamic calendar and prayer-times app.
-permalink: /taqwim/
 last_updated: 2026-05-04
+
+# Per-app metadata read by _layouts/app-policy.html and the landing page loop.
+app_name: Taqwim
+app_subtitle: Islamic Calendar & Prayer Times
+app_id: com.tmkgroup.taqwim
+data_collected: "None — Taqwim is fully offline and stores all data on your device only."
+order: 10
 ---
 
 ## Summary

@@ -3,28 +3,23 @@ description: Privacy policies for the apps published by TMK Group.
 url: https://privacy.tmkgroup.vn
 baseurl: ""
 
-# All apps in this repo render through the app-policy layout.
+# Single layout default for plain pages. Per-app metadata lives in each
+# app's own index.md frontmatter — see _TEMPLATE_app/index.md for the
+# canonical shape. This keeps the config flat regardless of how many
+# apps the repo grows to host.
 defaults:
   - scope:
       path: ""
       type: pages
     values:
       layout: default
-  - scope:
-      path: "taqwim"
-    values:
-      layout: app-policy
-      app_name: Taqwim
-      app_subtitle: Islamic Calendar & Prayer Times
-      app_id: com.tmkgroup.taqwim
-      data_collected: "None — Taqwim is fully offline and stores all data on your device only."
 
 # GitHub Pages-safe Jekyll only. No custom plugins.
 markdown: kramdown
 kramdown:
   input: GFM
 
-# Don't ship the templates in the published site.
+# Don't ship the templates / dev files in the published site.
 exclude:
   - "_TEMPLATE_app"
   - README.md
