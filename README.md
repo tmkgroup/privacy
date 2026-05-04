@@ -1,7 +1,8 @@
 # tmkgroup-privacy
 
 Privacy policies for every app published by **TMK Group**, served as a
-static Jekyll site through GitHub Pages at **https://privacy.tmkgroup.vn**.
+static Jekyll site through **Cloudflare Pages** at
+**https://privacy.tmkgroup.vn**.
 
 This repo's only job is to host the publisher-required privacy URL for
 the Google Play Store and the Apple App Store. Each app has its own page
@@ -14,7 +15,8 @@ so the per-app pages stay focused on what's actually different.
 ```
 .
 ├── _config.yml             ← Jekyll config (small, doesn't grow per app)
-├── CNAME                   ← privacy.tmkgroup.vn
+├── Gemfile                 ← Jekyll gem pin for Cloudflare's build
+├── .ruby-version           ← Ruby pin for reproducible builds
 ├── _layouts/
 │   ├── default.html        ← header / footer
 │   └── app-policy.html     ← per-app layout (includes master policy at the bottom)
@@ -64,36 +66,58 @@ Most edits don't require local preview — Jekyll's syntax is plain
 Markdown plus a tiny bit of front matter, and any layout error shows
 in the GitHub Actions log within a minute of pushing.
 
-## DNS — one-time setup
+## Hosting — Cloudflare Pages, one-time setup
 
-To make `privacy.tmkgroup.vn` serve this repo:
+To make `privacy.tmkgroup.vn` serve this repo via Cloudflare Pages:
 
-1. **GitHub side**:
-   - Push this repo to `github.com/tmkgroup/privacy` (public repo).
-   - In repo Settings → Pages: Source = `Deploy from branch`, Branch =
-     `main` (root). The `CNAME` file already has `privacy.tmkgroup.vn`,
-     so GitHub will auto-configure the custom domain.
-   - Enable "Enforce HTTPS" once the cert is provisioned (usually
-     within ~10 minutes).
+1. **Cloudflare account** (if not already)
+   - Sign up at https://dash.cloudflare.com/sign-up (free tier is enough).
+   - Add the site `tmkgroup.vn` to Cloudflare and switch the registrar's
+     nameservers to the two Cloudflare gives you. Cloudflare now manages
+     DNS for the whole domain — that step is what makes everything else
+     trivial later.
 
-2. **DNS provider side** (where `tmkgroup.vn` is registered):
-   - Add a `CNAME` record:
-     ```
-     Type:  CNAME
-     Host:  privacy
-     Value: tmkgroup.github.io
-     TTL:   3600
-     ```
-   - Wait 5-30 minutes for propagation. Check with:
-     ```sh
-     dig privacy.tmkgroup.vn +short
-     # → tmkgroup.github.io.
-     ```
+2. **Connect Cloudflare Pages to this GitHub repo**
+   - Cloudflare dashboard → **Workers & Pages** → **Create application**
+     → **Pages** → **Connect to Git**.
+   - Authorize Cloudflare to read the `tmkgroup` GitHub org (one-time).
+   - Select repo `tmkgroup/privacy`, branch `main`.
+   - Build settings:
+     - **Framework preset**: `Jekyll`
+     - **Build command**: `jekyll build`
+     - **Build output directory**: `_site`
+     - **Root directory**: `/`
+     - **Environment variables**: leave empty
+   - **Save and Deploy**. First build runs in ~1 minute; subsequent
+     builds (one per push) usually take ~30 seconds.
 
-3. **Verify**:
-   - Open `https://privacy.tmkgroup.vn/taqwim/` in a browser.
+3. **Add custom domain inside Cloudflare Pages**
+   - Project → **Custom domains** → **Set up a custom domain** →
+     `privacy.tmkgroup.vn` → **Activate domain**.
+   - Cloudflare automatically creates the matching `CNAME` record
+     because the domain is on the same Cloudflare account. SSL is
+     auto-issued in ~1 minute.
+
+4. **Verify**
+   - Open `https://privacy.tmkgroup.vn/taqwim/` in a browser. The
+     Taqwim privacy policy should render.
    - Submit this URL as the **Privacy Policy URL** in Google Play
      Console and App Store Connect when listing each app.
+
+### Alternative: DNS not on Cloudflare
+
+If you keep DNS at another provider (e.g. the registrar's panel),
+Cloudflare Pages still works — you just have to add the CNAME yourself:
+
+```
+Type:  CNAME
+Host:  privacy
+Value: <project-name>.pages.dev
+TTL:   3600
+```
+
+Cloudflare Pages tells you the exact `pages.dev` hostname under
+Custom domains. SSL still auto-provisions.
 
 ## Why this lives in its own repo
 
@@ -103,7 +127,7 @@ To make `privacy.tmkgroup.vn` serve this repo:
   rebuilt.
 - **Audit trail** — every wording change is a Git commit, which Apple
   and Google can verify if asked.
-- **Zero maintenance** — GitHub Pages handles SSL, CDN, and uptime.
+- **Zero maintenance** — Cloudflare Pages handles SSL, CDN, and uptime.
 
 ## License
 
