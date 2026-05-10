@@ -3,7 +3,7 @@ layout: app-policy
 permalink: /taqwim/
 title: Taqwim — Privacy Policy
 description: Privacy policy for Taqwim, the privacy-first Islamic calendar and prayer-times app.
-last_updated: 2026-05-04
+last_updated: 2026-05-10
 
 # Per-app metadata read by _layouts/app-policy.html and the landing page loop.
 app_name: Taqwim
@@ -99,6 +99,25 @@ We do not use Google Analytics, Firebase Analytics, Mixpanel,
 AppsFlyer, Sentry, Crashlytics, AdMob, Facebook SDK, or any similar
 third-party SDK. You can verify this by searching the public source
 code or by inspecting the APK with any tool of your choice.
+
+## In-app purchases
+
+Taqwim offers **one optional in-app purchase** — "Supporter", a one-time
+tip to support development. It is entirely optional; every feature of
+the app remains fully usable whether you buy it or not.
+
+- The transaction is processed **entirely by Apple App Store
+  (StoreKit) on iOS** or **Google Play Billing on Android**. Taqwim
+  never sees, receives, or stores your payment details, billing
+  address, or real name.
+- The app only learns whether the purchase succeeded — a single
+  on-device boolean — so it can show a "thank you" state. Nothing about
+  the purchase is sent to us or to any third party.
+- There is no subscription, no recurring charge, and no auto-renewal.
+- Refunds, receipts, and purchase history are handled by Apple or
+  Google under their own terms and privacy policies:
+  [Apple](https://www.apple.com/legal/privacy/) ·
+  [Google](https://policies.google.com/privacy).
 
 ## Backups
 
