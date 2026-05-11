@@ -1,7 +1,7 @@
 # tmkgroup-privacy
 
 Privacy policies for every app published by **TMK Group**, served as a
-static Jekyll site through **Cloudflare Pages** at
+static Jekyll site through **GitHub Pages** at
 **https://privacy.tmkgroup.vn**.
 
 This repo's only job is to host the publisher-required privacy URL for
@@ -15,7 +15,8 @@ so the per-app pages stay focused on what's actually different.
 ```
 .
 ├── _config.yml             ← Jekyll config (small, doesn't grow per app)
-├── Gemfile                 ← Jekyll gem pin for Cloudflare's build
+├── Gemfile                 ← Jekyll gem pin (GitHub Pages-compatible)
+├── CNAME                   ← custom domain — DO NOT delete; GitHub Pages reads it
 ├── .ruby-version           ← Ruby pin for reproducible builds
 ├── _layouts/
 │   ├── default.html        ← header / footer
@@ -66,58 +67,67 @@ Most edits don't require local preview — Jekyll's syntax is plain
 Markdown plus a tiny bit of front matter, and any layout error shows
 in the GitHub Actions log within a minute of pushing.
 
-## Hosting — Cloudflare Pages, one-time setup
+## Hosting — GitHub Pages, one-time setup
 
-To make `privacy.tmkgroup.vn` serve this repo via Cloudflare Pages:
+> **Prerequisite:** the repo MUST be **public**. GitHub Pages on the
+> free tier does not host private repos — you'll see "Upgrade or make
+> this repository public to enable Pages" if it's private. Privacy
+> policies are public information anyway (you submit the URL to Apple
+> and Google), so this is the right default.
 
-1. **Cloudflare account** (if not already)
-   - Sign up at https://dash.cloudflare.com/sign-up (free tier is enough).
-   - Add the site `tmkgroup.vn` to Cloudflare and switch the registrar's
-     nameservers to the two Cloudflare gives you. Cloudflare now manages
-     DNS for the whole domain — that step is what makes everything else
-     trivial later.
+To make `privacy.tmkgroup.vn` serve this repo:
 
-2. **Connect Cloudflare Pages to this GitHub repo**
-   - Cloudflare dashboard → **Workers & Pages** → **Create application**
-     → **Pages** → **Connect to Git**.
-   - Authorize Cloudflare to read the `tmkgroup` GitHub org (one-time).
-   - Select repo `tmkgroup/privacy`, branch `main`.
-   - Build settings:
-     - **Framework preset**: `Jekyll`
-     - **Build command**: `jekyll build`
-     - **Build output directory**: `_site`
-     - **Root directory**: `/`
-     - **Environment variables**: leave empty
-   - **Save and Deploy**. First build runs in ~1 minute; subsequent
-     builds (one per push) usually take ~30 seconds.
+1. **Make the repo public**
+   - `tmkgroup/privacy` → **Settings → General** → scroll to **Danger
+     Zone** → **Change repository visibility** → **Make public** →
+     confirm by typing the repo name.
 
-3. **Add custom domain inside Cloudflare Pages**
-   - Project → **Custom domains** → **Set up a custom domain** →
-     `privacy.tmkgroup.vn` → **Activate domain**.
-   - Cloudflare automatically creates the matching `CNAME` record
-     because the domain is on the same Cloudflare account. SSL is
-     auto-issued in ~1 minute.
+2. **Enable GitHub Pages**
+   - **Settings → Pages**.
+   - **Source**: *Deploy from a branch*.
+   - **Branch**: `main`, folder `/ (root)` → **Save**.
+   - GitHub builds the Jekyll site automatically on every push to
+     `main`. First build ~1 minute; subsequent builds ~30–60 seconds.
+     Build logs live under the repo's **Actions** tab.
 
-4. **Verify**
-   - Open `https://privacy.tmkgroup.vn/taqwim/` in a browser. The
-     Taqwim privacy policy should render.
+3. **Add the custom domain**
+   - Same page, **Custom domain** field → type `privacy.tmkgroup.vn`
+     → **Save**.
+   - GitHub commits a `CNAME` file to `main` containing that hostname.
+     **Don't delete it** — GitHub Pages reads it on every build to know
+     which domain to serve.
+   - GitHub then requests a free Let's Encrypt certificate. SSL
+     provisioning takes 1–10 minutes; the page shows a green "Your
+     site is published at https://privacy.tmkgroup.vn/" when ready.
+   - Once the cert is live, tick **Enforce HTTPS**.
+
+4. **DNS (one-time, at your domain registrar)**
+   - Add a `CNAME` record at the registrar's DNS panel:
+     ```
+     Type:  CNAME
+     Host:  privacy
+     Value: tmkgroup.github.io
+     TTL:   3600
+     ```
+   - GitHub Pages serves from four anycast IPs
+     (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`,
+     `185.199.111.153`) — using `CNAME` is preferred so GitHub can
+     change IPs without breaking you.
+
+5. **Verify**
+   - Open `https://privacy.tmkgroup.vn/taqwim/`. The Taqwim privacy
+     policy should render with a valid green-padlock cert.
    - Submit this URL as the **Privacy Policy URL** in Google Play
      Console and App Store Connect when listing each app.
 
-### Alternative: DNS not on Cloudflare
+### Troubleshooting
 
-If you keep DNS at another provider (e.g. the registrar's panel),
-Cloudflare Pages still works — you just have to add the CNAME yourself:
-
-```
-Type:  CNAME
-Host:  privacy
-Value: <project-name>.pages.dev
-TTL:   3600
-```
-
-Cloudflare Pages tells you the exact `pages.dev` hostname under
-Custom domains. SSL still auto-provisions.
+| Symptom | Cause | Fix |
+|---|---|---|
+| "Upgrade or make this repository public to enable Pages" | Repo is private | Step 1 — make public |
+| `NET::ERR_CERT_COMMON_NAME_INVALID` | Custom domain not configured in Pages settings, GitHub serving default cert | Step 3 — add custom domain, wait for Let's Encrypt |
+| 404 from GitHub Pages | `CNAME` file missing or branch source wrong | Re-do Step 3; check `main/` has a `CNAME` file at root |
+| Site shows old content | Jekyll build failed | Check **Actions** tab for the failing build log |
 
 ## Why this lives in its own repo
 
@@ -127,7 +137,8 @@ Custom domains. SSL still auto-provisions.
   rebuilt.
 - **Audit trail** — every wording change is a Git commit, which Apple
   and Google can verify if asked.
-- **Zero maintenance** — Cloudflare Pages handles SSL, CDN, and uptime.
+- **Zero maintenance** — GitHub Pages handles SSL (Let's Encrypt),
+  CDN, and uptime for free.
 
 ## License
 

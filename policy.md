@@ -54,7 +54,7 @@ Reference implementation: [`taqwim/index.md`](taqwim/index.md).
 
 ---
 
-## Step 2 — Push, Cloudflare auto-deploys
+## Step 2 — Push, GitHub Pages auto-deploys
 
 ```sh
 git add <appname>/
@@ -62,8 +62,14 @@ git commit -m "Add <AppName> privacy policy"
 git push
 ```
 
-Cloudflare Pages rebuilds in ~30–60 seconds. Verify by opening
-`https://privacy.tmkgroup.vn/<appname>/` in a browser.
+GitHub Pages rebuilds on every push to `main` in ~30–60 seconds.
+Build status is visible under the repo's **Actions** tab. Verify
+by opening `https://privacy.tmkgroup.vn/<appname>/` in a browser.
+
+> **Prerequisite (one-time, already done):** the repo must be public
+> and GitHub Pages must be configured (Settings → Pages → Source:
+> `main`/root + Custom domain `privacy.tmkgroup.vn`). See
+> [README.md](README.md) for the full one-time hosting setup.
 
 ---
 
