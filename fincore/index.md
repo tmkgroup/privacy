@@ -1,6 +1,6 @@
 ---
 layout: app-policy
-permalink: /so-thu-chi/
+permalink: /fincore/
 title: "Sổ Thu Chi — Privacy Policy"
 description: "Privacy policy for Sổ Thu Chi, the fully offline personal income & expense tracker."
 last_updated: 2026-05-12
