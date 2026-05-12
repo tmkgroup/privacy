@@ -1,27 +1,27 @@
 ---
 layout: app-policy
 permalink: /fincore/
-title: "Sổ Thu Chi — Privacy Policy"
-description: "Privacy policy for Sổ Thu Chi, the fully offline personal income & expense tracker."
+title: "Fincore — Privacy Policy"
+description: "Privacy policy for Fincore, the offline personal finance tracker."
 last_updated: 2026-05-12
 
-app_name: Sổ Thu Chi
+app_name: Fincore
 app_subtitle: Personal Income & Expense Tracker
 app_id: com.tmkgroup.fincore
-data_collected: "None — Sổ Thu Chi is fully offline and stores all data on your device only."
+data_collected: "None — Fincore is fully offline and stores all data on your device only."
 order: 30
 ---
 
 ## Summary
 
-**Sổ Thu Chi is fully offline. We collect nothing.**
+**Fincore is fully offline. We collect nothing.**
 
 There is no account, no sign-in, no analytics SDK, no advertising SDK,
 no crash reporter, and no remote backend. Every transaction, category,
 note, and recurring payment you record lives in encrypted local storage
 on your device — and nowhere else.
 
-If you uninstall Sổ Thu Chi, every byte of data the app ever had is
+If you uninstall Fincore, every byte of data the app ever had is
 gone with it. We cannot recover anything for you, and neither can anyone
 else, because no copy ever left your phone.
 
@@ -29,7 +29,7 @@ else, because no copy ever left your phone.
 
 ### From you, automatically
 
-**None.** Sổ Thu Chi has no telemetry, no analytics, no crash
+**None.** Fincore has no telemetry, no analytics, no crash
 reporting, and no remote backend. We have no way to identify you, see
 what you record in the app, or know that you exist as a user.
 
@@ -56,7 +56,7 @@ This data is **never** uploaded anywhere. It is yours, and only yours.
 
 ## Permissions explained
 
-| Permission | Why Sổ Thu Chi needs it |
+| Permission | Why Fincore needs it |
 |---|---|
 | Notifications | Locally-scheduled payment-due reminders. Never sent to a server. Optional — the app works without it. |
 | Exact alarm (Android 12+) | Required by Android so payment reminders fire at the exact scheduled minute, not "approximately". |
@@ -68,7 +68,7 @@ The app continues to work with reduced features (e.g. no reminders) when a permi
 
 ## Third-party services
 
-**None.** Sổ Thu Chi does not connect to any external service. There is
+**None.** Fincore does not connect to any external service. There is
 no Google Analytics, Firebase Analytics, Crashlytics, Sentry, AdMob,
 Facebook SDK, or any other telemetry or advertising endpoint.
 
@@ -81,7 +81,7 @@ to TMK Group.
 
 ## Backups (yours to save anywhere)
 
-Sổ Thu Chi includes a **passphrase-encrypted backup feature**
+Fincore includes a **passphrase-encrypted backup feature**
 (Settings → Backup & Restore → Export Backup).
 
 When you create a backup:
@@ -110,7 +110,7 @@ When you create a backup:
 
 ## Children's privacy
 
-Sổ Thu Chi is suitable for all ages. Because we collect no personal data
+Fincore is suitable for all ages. Because we collect no personal data
 and operate no server, the app cannot identify the age of any user. We
 do not knowingly collect data from children under 13 (or 16 in the EU);
 we do not collect data from anyone.
