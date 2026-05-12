@@ -36,18 +36,34 @@ so the per-app pages stay focused on what's actually different.
 The whole workflow scales to dozens of apps without the config bloating:
 
 ```sh
-cp -r _TEMPLATE_app newapp
-# edit newapp/index.md only
-git add newapp && git commit -m "Add NewApp privacy policy" && git push
+cp -r _TEMPLATE_app <appname>
+# edit <appname>/index.md only
+git add <appname> && git commit -m "Add <AppName> privacy policy" && git push
 ```
 
 That is it. Concretely:
 
-1. Copy the template directory: `cp -r _TEMPLATE_app newapp`.
-2. Open `newapp/index.md`, replace every placeholder in the frontmatter
+1. Copy the template directory: `cp -r _TEMPLATE_app <appname>`.
+2. Open `<appname>/index.md`, replace every placeholder in the frontmatter
    (`permalink`, `app_name`, `app_subtitle`, `app_id`,
    `data_collected`, `order`), and write the policy body.
 3. Commit and push. GitHub Pages rebuilds in 30–60 seconds.
+
+### Naming convention — folder name = technical app name
+
+The folder name (and `permalink`) must match the **last segment of the
+bundle ID**, not the display name. Examples:
+
+| App display name | Bundle ID | Folder / permalink |
+|---|---|---|
+| Taqwim | `com.tmkgroup.taqwim` | `taqwim/` |
+| Shubh Calendar | `com.tmkgroup.shubhcalendar` | `shubh-calendar/` |
+| Vintana | `com.tmkgroup.vintana` | `vintana/` |
+| Sổ Thu Chi | `com.tmkgroup.fincore` | `fincore/` |
+
+Use the Flutter project name / Android `namespace` if the bundle ID
+segment is ambiguous. Never use the localised display name as the folder
+name — it changes across languages and makes URLs fragile.
 
 The landing page (`/`) reads `app_name` from each page's frontmatter
 and automatically lists the new app — no need to edit `index.md`. The
