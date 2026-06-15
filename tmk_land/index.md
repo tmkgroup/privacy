@@ -3,7 +3,7 @@ layout: app-policy
 permalink: /tmk_land/
 title: "TMK Land — Privacy Policy"
 description: "Privacy policy for TMK Land, the real-estate management and shared-investment platform."
-last_updated: 2026-05-14
+last_updated: 2026-06-15
 app_name: TMK Land
 app_subtitle: Real-Estate Management & Shared Investment
 app_id: com.tmkgroup.tmkland
@@ -113,7 +113,7 @@ TMK Land **does not** integrate any third-party analytics, crash reporting or ad
 
 ## In-app purchases
 
-TMK Land does not sell anything in-app today. If we add paid features in a future version, billing will go through Apple / Google and this policy will be updated before that build ships.
+TMK Land offers optional VIP subscriptions and one-time purchases through Apple App Store / Google Play billing. All payment transactions are processed entirely by Apple or Google — TMK Land never receives or stores your payment card information. Purchases are subject to the respective platform's terms of service.
 
 ---
 
@@ -146,6 +146,26 @@ TMK Land is **not directed to children**. Renting property and joining a shared-
 | **Delete your account** | Profile → Settings → Delete Account, or email `trucmn@gmail.com`. We remove your `profiles` row, your Supabase Storage files, and anonymise any records that other accounts still depend on (e.g. a contract you signed with another user). |
 | **Revoke OAuth** | Sign out, then revoke the app at [myaccount.google.com/permissions](https://myaccount.google.com/permissions) or, on iOS, **Settings → Apple ID → Sign in with Apple** |
 | **Revoke a device permission** | OS Settings → Apps → TMK Land → Permissions |
+
+---
+
+## Account Deletion
+
+You can delete your TMK Land account and all associated data at any time using either of the following methods:
+
+**Option 1 — In-app (recommended):**
+Open the app → Profile → Settings → Delete Account → confirm deletion.
+
+**Option 2 — Email request:**
+Send an email to **tmktechgroup@gmail.com** with the subject line "Account Deletion Request" and include the email address associated with your TMK Land account. We will process your request within 30 days.
+
+Upon deletion, we will permanently remove:
+- Your account profile and authentication record
+- All property listings, rental contracts, and investment records you created
+- Your uploaded photos and files
+- On-device data is cleared when you uninstall the app
+
+Records that other accounts depend on (e.g., a rental contract co-signed with a tenant) will be anonymised rather than deleted, so those users are not affected.
 
 ---
 
