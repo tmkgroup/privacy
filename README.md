@@ -57,7 +57,7 @@ bundle ID**, not the display name. Examples:
 | App display name | Bundle ID | Folder / permalink |
 |---|---|---|
 | Taqwim | `com.tmkgroup.taqwim` | `taqwim/` |
-| Shubh Calendar | `com.tmkgroup.shubhcalendar` | `shubh-calendar/` |
+| India Calendar | `com.tmkgroup.india` | `india-calendar/` |
 | Vintana | `com.tmkgroup.vintana` | `vintana/` |
 | Sổ Thu Chi | `com.tmkgroup.fincore` | `fincore/` |
 
