@@ -1,21 +1,21 @@
 ---
 layout: app-policy
-permalink: /shubh-calendar/
-title: Shubh Calendar — Privacy Policy
-description: Privacy policy for Shubh Calendar, the Hindu Panchang & Muhurat daily decision tool.
-last_updated: 2026-05-11
+permalink: /india-calendar/
+title: India Calendar — Privacy Policy
+description: Privacy policy for India Calendar, the Hindu Panchang & Muhurat daily decision tool.
+last_updated: 2026-10-15
 
 # Per-app metadata read by _layouts/app-policy.html and the landing page loop.
-app_name: Shubh Calendar
+app_name: India Calendar
 app_subtitle: Hindu Panchang & Muhurat daily decision tool
-app_id: com.tmkgroup.shubhcalendar
+app_id: com.tmkgroup.india
 data_collected: "Nothing reaches our servers. You can save an encrypted backup file to YOUR own Drive / iCloud / device. Free tier shows AdMob ads."
 order: 20
 ---
 
 ## Summary
 
-Shubh Calendar gives you daily Panchang, Muhurat, Vrat, festivals, Kundli,
+India Calendar gives you daily Panchang, Muhurat, Vrat, festivals, Kundli,
 matching, mantras, Vastu and horoscope tools.
 
 **TMK Group runs no server for this app and stores nothing of yours.**
@@ -89,7 +89,7 @@ own Google Drive / iCloud Drive (see *Backups* and *Cloud sync* below).
 
 ## Permissions explained
 
-| Permission | Why Shubh Calendar needs it |
+| Permission | Why India Calendar needs it |
 |---|---|
 | Location (when in use) | Compute Panchang, Muhurat, sunrise/sunset for your current city. Optional — you can pick a city manually. Coordinates stay on-device. |
 | Calendar (write) | "Add to calendar" on Muhurat / festival items. Per-event, never bulk read. |
@@ -108,7 +108,7 @@ calendar export, etc.) when a permission is denied.
 
 ## No accounts, no TMK servers
 
-**Shubh Calendar has no sign-in to a TMK account.** We do not run an
+**India Calendar has no sign-in to a TMK account.** We do not run an
 auth server, a profile server, or a sync server for this app. There is
 no way for us to identify you or look at your data.
 
@@ -117,7 +117,7 @@ with you using the encrypted backup feature below.
 
 ## Backups (yours to save anywhere)
 
-Shubh Calendar includes a **passphrase-encrypted backup feature**
+India Calendar includes a **passphrase-encrypted backup feature**
 (Settings → Backup & Restore → Export Backup). It is free for everyone.
 
 When you create a backup:
@@ -144,7 +144,7 @@ PDF exports of Kundli / Muhurat charts go to the location you choose
 
 ## Third-party services
 
-Shubh Calendar talks to the following external services. Each is listed
+India Calendar talks to the following external services. Each is listed
 with its purpose and the data sent. **None of them is a TMK Group
 server** — TMK Group does not run any backend for this app.
 
@@ -170,13 +170,13 @@ Branch, Adjust, Sentry, or the Facebook SDK.
 
 ## In-app purchases
 
-Shubh Calendar offers **one optional in-app purchase**:
+India Calendar offers **one optional in-app purchase**:
 
-- **Shubh Premium — Lifetime** (`shubh_premium_lifetime`), a one-time
+- **India Premium — Lifetime** (`india_premium_lifetime`), a one-time
   US$0.99 (≈ ₹89, €0.99) non-consumable purchase that removes all ads.
   There is **no subscription, no recurring charge, no auto-renewal**.
 - The transaction is processed **entirely by Apple App Store (StoreKit)
-  on iOS** or **Google Play Billing on Android**. Shubh Calendar never
+  on iOS** or **Google Play Billing on Android**. India Calendar never
   sees, receives, or stores your payment details, billing address or
   real name.
 - The app stores a single boolean on your device ("is premium = yes/no")
@@ -202,7 +202,7 @@ Shubh Calendar offers **one optional in-app purchase**:
 
 ## Children's privacy
 
-Shubh Calendar is suitable for general audiences. Because we operate no
+India Calendar is suitable for general audiences. Because we operate no
 account and no server, we cannot identify any user — including their
 age. We do not knowingly collect data from children under 13 (or under
 16 in the EU); the only data leaving the device is anonymous AdMob ad
@@ -221,7 +221,7 @@ requests on the free tier (which can be disabled by buying Premium).
   and delete it from there. We never had a copy.
 - **Correct**: edit any profile or Kundli field directly inside the app.
 - **Object / restrict**: revoke any permission in your device settings;
-  Shubh Calendar continues to work with reduced features. Free-tier ad
+  India Calendar continues to work with reduced features. Free-tier ad
   personalisation can be turned off in Android settings → Privacy → Ads,
   in iOS Settings → Privacy → Tracking, or by purchasing Premium.
 
