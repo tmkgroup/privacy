@@ -1,7 +1,7 @@
 ---
 # Xiangqi Clash dùng layout "default" (KHÔNG "app-policy") như Desi Board: master-policy ghi "never share it with advertisers",
 # sai với Xiangqi Clash (AdMob). Nguồn từng ý: E:/Onsite/game/000-unity/Co tuong/Xiangqi Clash/PRIVACY_POLICY_DRAFT.md
-# (anh Truc duyệt 2026-10-25: "duyệt chính sách Xiangqi Clash, đăng lên privacy.tmkgroup.vn/xiangqiclash/ rồi gửi Apple duyệt nhóm ngoài").
+# (anh Truc duyệt 2026-10-25: "duyệt chính sách Xiangqi Clash, đăng lên privacy.tmktechgroup.com/xiangqiclash/ rồi gửi Apple duyệt nhóm ngoài").
 layout: default
 permalink: /xiangqiclash/
 title: "Xiangqi Clash — Privacy Policy"

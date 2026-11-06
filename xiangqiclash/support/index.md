@@ -35,7 +35,7 @@ Your settings, progress and game history are saved only on your device. Uninstal
 
 ## Privacy
 
-Read our [Privacy Policy](https://privacy.tmkgroup.vn/xiangqiclash/).
+Read our [Privacy Policy](https://privacy.tmktechgroup.com/xiangqiclash/).
 
 </div>
 </article>

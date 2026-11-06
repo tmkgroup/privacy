@@ -41,7 +41,7 @@ Open **Profile → Language** to change the language.
 
 ## Privacy
 
-Read our [Privacy Policy](https://privacy.tmkgroup.vn/caribbean/).
+Read our [Privacy Policy](https://privacy.tmktechgroup.com/caribbean/).
 
 </div>
 </article>

@@ -47,7 +47,7 @@ Open **Profile → Language** to change the language.
 
 ## Privacy
 
-Read our [Privacy Policy](https://privacy.tmkgroup.vn/catholic-calendar/).
+Read our [Privacy Policy](https://privacy.tmktechgroup.com/catholic-calendar/).
 
 </div>
 </article>

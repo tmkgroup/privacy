@@ -48,7 +48,7 @@ last_updated: 2026-11-06
 
 ## 개인정보 처리방침
 
-[개인정보 처리방침](https://privacy.tmkgroup.vn/korea/)
+[개인정보 처리방침](https://privacy.tmktechgroup.com/korea/)
 
 </div>
 </article>
