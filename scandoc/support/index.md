@@ -84,7 +84,7 @@ The **Settings** tab holds dark mode, five accent colours, the app language and 
 
 ## Privacy
 
-Read our [Privacy Policy](https://privacy.tmkgroup.vn/scandoc/).
+Read our [Privacy Policy](https://privacy.tmktechgroup.com/scandoc/).
 
 </div>
 </article>

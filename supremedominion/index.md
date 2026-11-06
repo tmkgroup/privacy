@@ -7,7 +7,7 @@
 # Campaign/Shop.cs (gói kim cương, thẻ tháng, Supporter Pack), Campaign/CampaignHud.Shop.cs (Restore purchases).
 # Máy chủ: E:/Onsite/cloudflare/worker-game-giftcode/src/index.js (bảng saves giữ data + prev_data, owner = install ID, platform, build;
 # đếm lần sai theo install ID + IP trong 1 giờ; không có lệnh xoá save tự động). ProjectSettings/UnityConnectSettings.asset:
-# m_EngineDiagnosticsEnabled 1, Unity Analytics 0. Anh Truc 2026-11-06: "privacy.tmkgroup.vn/supremedominion/ mẹ mày đợi tao làm à?"
+# m_EngineDiagnosticsEnabled 1, Unity Analytics 0. Anh Truc 2026-11-06: "privacy.tmktechgroup.com/supremedominion/ mẹ mày đợi tao làm à?"
 layout: default
 permalink: /supremedominion/
 title: "Supreme Dominion — Privacy Policy"

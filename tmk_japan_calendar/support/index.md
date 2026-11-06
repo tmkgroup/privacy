@@ -38,7 +38,7 @@ last_updated: 2026-11-06
 
 ## プライバシーポリシー
 
-- プライバシーポリシーの全文は以下よりご確認いただけます：https://privacy.tmkgroup.vn/tmk_japan_calendar/
+- プライバシーポリシーの全文は以下よりご確認いただけます：https://privacy.tmktechgroup.com/tmk_japan_calendar/
 
 </div>
 </article>

@@ -54,7 +54,7 @@ The **Appearance** section of **More** holds **Theme** (System / Light / Dark), 
 
 ## Privacy
 
-Read our [Privacy Policy](https://privacy.tmkgroup.vn/fincore/).
+Read our [Privacy Policy](https://privacy.tmktechgroup.com/fincore/).
 
 </div>
 </article>

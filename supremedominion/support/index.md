@@ -3,7 +3,7 @@
 # Runtime/Campaign/CampaignHud.Online.cs (Settings → Language / Gift codes / Cloud save / Restore a backup / nút News),
 # CampaignHud.Shop.cs (dòng Remove ads đầu Shop, Restore purchases cuối Shop), CampaignPrototype.Ads.cs ShowAd (gói đang chạy → nút Watch cho quà luôn),
 # Campaign/Online.cs CloudSave (mã sao lưu 10 ký tự + mật khẩu 16 ký tự). Không có app_name → trang chủ không liệt kê như 1 chính sách.
-# Anh Truc 2026-11-06: "privacy.tmkgroup.vn/supremedominion/ mẹ mày đợi tao làm à?"
+# Anh Truc 2026-11-06: "privacy.tmktechgroup.com/supremedominion/ mẹ mày đợi tao làm à?"
 layout: default
 permalink: /supremedominion/support/
 title: "Supreme Dominion — Support"
@@ -45,7 +45,7 @@ Open **Settings → Language** to choose your language.
 
 ## Privacy
 
-Read our [Privacy Policy](https://privacy.tmkgroup.vn/supremedominion/).
+Read our [Privacy Policy](https://privacy.tmktechgroup.com/supremedominion/).
 
 </div>
 </article>

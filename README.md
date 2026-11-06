@@ -2,7 +2,7 @@
 
 Privacy policies for every app published by **TMK Group**, served as a
 static Jekyll site through **GitHub Pages** at
-**https://privacy.tmkgroup.vn**.
+**https://privacy.tmktechgroup.com**.
 
 This repo's only job is to host the publisher-required privacy URL for
 the Google Play Store and the Apple App Store. Each app has its own page
@@ -91,7 +91,7 @@ in the GitHub Actions log within a minute of pushing.
 > policies are public information anyway (you submit the URL to Apple
 > and Google), so this is the right default.
 
-To make `privacy.tmkgroup.vn` serve this repo:
+To make `privacy.tmktechgroup.com` serve this repo:
 
 1. **Make the repo public**
    - `tmkgroup/privacy` → **Settings → General** → scroll to **Danger
@@ -107,14 +107,14 @@ To make `privacy.tmkgroup.vn` serve this repo:
      Build logs live under the repo's **Actions** tab.
 
 3. **Add the custom domain**
-   - Same page, **Custom domain** field → type `privacy.tmkgroup.vn`
+   - Same page, **Custom domain** field → type `privacy.tmktechgroup.com`
      → **Save**.
    - GitHub commits a `CNAME` file to `main` containing that hostname.
      **Don't delete it** — GitHub Pages reads it on every build to know
      which domain to serve.
    - GitHub then requests a free Let's Encrypt certificate. SSL
      provisioning takes 1–10 minutes; the page shows a green "Your
-     site is published at https://privacy.tmkgroup.vn/" when ready.
+     site is published at https://privacy.tmktechgroup.com/" when ready.
    - Once the cert is live, tick **Enforce HTTPS**.
 
 4. **DNS (one-time, at your domain registrar)**
@@ -131,7 +131,7 @@ To make `privacy.tmkgroup.vn` serve this repo:
      change IPs without breaking you.
 
 5. **Verify**
-   - Open `https://privacy.tmkgroup.vn/taqwim/`. The Taqwim privacy
+   - Open `https://privacy.tmktechgroup.com/taqwim/`. The Taqwim privacy
      policy should render with a valid green-padlock cert.
    - Submit this URL as the **Privacy Policy URL** in Google Play
      Console and App Store Connect when listing each app.

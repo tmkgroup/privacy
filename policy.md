@@ -3,7 +3,7 @@
 Per-app cheat sheet. The full architecture lives in [README.md](README.md);
 this file is the **5-minute checklist** every new app follows.
 
-URL pattern: `https://privacy.tmkgroup.vn/<appname>/`
+URL pattern: `https://privacy.tmktechgroup.com/<appname>/`
 
 ---
 
@@ -64,11 +64,11 @@ git push
 
 GitHub Pages rebuilds on every push to `main` in ~30–60 seconds.
 Build status is visible under the repo's **Actions** tab. Verify
-by opening `https://privacy.tmkgroup.vn/<appname>/` in a browser.
+by opening `https://privacy.tmktechgroup.com/<appname>/` in a browser.
 
 > **Prerequisite (one-time, already done):** the repo must be public
 > and GitHub Pages must be configured (Settings → Pages → Source:
-> `main`/root + Custom domain `privacy.tmkgroup.vn`). See
+> `main`/root + Custom domain `privacy.tmktechgroup.com`). See
 > [README.md](README.md) for the full one-time hosting setup.
 
 ---
@@ -93,7 +93,7 @@ dependencies:
 import 'package:url_launcher/url_launcher.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
-  static const _publicUrl = 'https://privacy.tmkgroup.vn/<appname>/';
+  static const _publicUrl = 'https://privacy.tmktechgroup.com/<appname>/';
 
   Future<void> _open(BuildContext context) async {
     final ok = await launchUrl(Uri.parse(_publicUrl),
@@ -130,7 +130,7 @@ If the onboarding screen has a "Terms of Use" block, keep it short
 
 ## Step 4 — Submit URL to stores
 
-Use **`https://privacy.tmkgroup.vn/<appname>/`** (with trailing slash) as:
+Use **`https://privacy.tmktechgroup.com/<appname>/`** (with trailing slash) as:
 
 - **Google Play Console** → App content → Privacy policy → URL
 - **App Store Connect** → App Information → Privacy Policy URL
