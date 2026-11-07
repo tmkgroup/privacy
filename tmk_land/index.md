@@ -1,15 +1,42 @@
 ---
-layout: app-policy
+# TMK Land dùng layout "default" (KHÔNG "app-policy") từ 2026-11-07 như Scan Doc / Caribbean Calendar:
+# _includes/master-policy.md ghi "never share it with advertisers", sai với app này từ 2026-11-07 (gắn Google AdMob thật).
+# Nguồn từng ý thêm 2026-11-07:
+#  - tmk_land/lib/ads/app_ads.dart (UMP consent rồi mới khởi động SDK; mã AdMob thật)
+#  - tmk_land/lib/presentation/pages/main/utility_page.dart (banner TmkBannerAdWidget sau lưới Tiện ích)
+#  - package/tmk_wallet_package/lib/src/presentation/screens/missions_page.dart:62 (quảng cáo có thưởng nhận xu,
+#    gửi ssvUserId = mã tài khoản + ssvCustomData = mã lượt cho kiểm tra phía máy chủ)
+#  - tmk_land/lib/services/remove_ads_service.dart (gói com.tmkgroup.tmkland.remove_ads_3m, 3 tháng)
+#  - tmk_land/ios/Runner/Info.plist (NSUserTrackingUsageDescription, GADApplicationIdentifier thật)
+#  - danh sách dữ liệu SDK quảng cáo: bê scandoc/index.md mục 5 (developers.google.com/admob/ios/privacy/data-disclosure)
+layout: default
 permalink: /tmk_land/
 title: "TMK Land — Privacy Policy"
 description: "Privacy policy for TMK Land, the real-estate management and shared-investment platform."
-last_updated: 2026-06-15
+last_updated: 2026-11-07
 app_name: TMK Land
 app_subtitle: Real-Estate Management & Shared Investment
 app_id: com.tmkgroup.tmkland
-data_collected: "Account, property, rental and investment data are stored on TMK servers (Supabase) because the app is collaborative. National-ID (CCCD) number is collected with consent for tenant identification; CCCD photos are never stored or uploaded — they are processed on-device only by an OCR helper that discards them after extracting text."
+data_collected: "Account, property, rental and investment data are stored on TMK servers (Supabase) because the app is collaborative. National-ID (CCCD) number is collected with consent for tenant identification; CCCD photos are never stored or uploaded — they are processed on-device only by an OCR helper that discards them after extracting text. Google AdMob ads collect device data; the Remove ads subscription turns them off."
 order: 40
 ---
+
+<article class="app-policy">
+  <p class="app-back"><a href="/">← All policies</a></p>
+  <header class="app-header">
+    <h1>TMK Land — Privacy Policy</h1>
+    <p class="app-subtitle">Real-Estate Management &amp; Shared Investment</p>
+    <p class="app-meta">
+      <span>Bundle ID: <code>com.tmkgroup.tmkland</code></span>
+      <span>Last updated: 2026-11-07</span>
+    </p>
+  </header>
+
+  <aside class="data-summary">
+    <strong>Data we collect:</strong> Account, property, rental and investment data are stored on TMK servers (Supabase) because the app is collaborative. National-ID (CCCD) number is collected with consent for tenant identification; CCCD photos are never stored or uploaded — they are processed on-device only by an OCR helper that discards them after extracting text. Google AdMob ads collect device data; the Remove ads subscription turns them off.
+  </aside>
+
+<div markdown="1">
 
 ## Summary
 
@@ -21,7 +48,7 @@ TMK Land is a collaborative real-estate platform: you create property listings, 
 - An **on-device OCR helper** (Google ML Kit Text Recognition) lets you photograph a CCCD so the app can auto-fill the number, name, date of birth, etc. into the form. **The photo itself is never uploaded to TMK servers and is never stored in the app** — it lives only in the OS temp directory for the few seconds the OCR runs, and is discarded as soon as you close the scanner sheet.
 - **No CCCD images are stored** in our database or storage buckets. Older builds offered "Upload CCCD front/back photo"; this feature has been removed.
 
-The app currently ships **without** analytics, **without** crash reporting, and **without** advertising. AdMob is declared in the Android manifest only because a shared TMK package (`tmk_wallet_package`) pulls in `play-services-ads`; the AdMob App ID is Google's official **test** ID and no real ads are requested.
+The app ships **without** analytics and **without** crash reporting. Since 2026-11-07 the free version shows ads from **Google AdMob** (a banner on the Utilities screen and an optional rewarded video in Wallet → Missions); see [Advertising](#advertising-google-admob). The optional **Remove ads** subscription turns them off.
 
 ---
 
@@ -105,9 +132,35 @@ You can revoke any of these in your OS settings at any time; the corresponding f
 | **Google ML Kit — Text Recognition** | On-device OCR for the CCCD scanner (auto-fill tenant identity form) | The photo bytes are processed **on-device only**; nothing is uploaded by ML Kit | [ML Kit terms](https://developers.google.com/ml-kit/terms) |
 | **Maplibre GL** | Render the map | Map-tile requests (your viewport coordinates) go to the configured tile provider | Provider's own policy |
 | **Jitsi Meet** | In-app video meetings | Audio/video stream + room name during the call | [Jitsi privacy](https://jitsi.org/meet-jit-si-privacy/) |
-| **Google AdMob SDK** | **Currently not serving ads.** The SDK is pulled in by a shared TMK package; the App ID configured is Google's official test ID (`ca-app-pub-3940256099942544~3347511713`). | Nothing — no `AdRequest` is ever made by TMK Land | [Google privacy](https://policies.google.com/privacy) |
+| **Google AdMob SDK** | Banner ad and optional rewarded video (see [Advertising](#advertising-google-admob)) | Device data listed in the Advertising section; for the rewarded video also your TMK account ID and a one-time session code so the coin reward can be verified | [Google privacy](https://policies.google.com/privacy) |
 
-TMK Land **does not** integrate any third-party analytics, crash reporting or advertising attribution SDK.
+TMK Land **does not** integrate any third-party analytics, crash reporting or advertising attribution SDK. The only advertising SDK is Google AdMob, described below.
+
+---
+
+## Advertising (Google AdMob)
+
+The free version shows a banner below the Utilities grid and offers an optional rewarded video in Wallet → Missions, using the Google Mobile Ads SDK (Google AdMob). According to Google, the SDK may collect:
+
+- coarse location, including location derived from the IP address;
+- a device ID, such as the advertising identifier;
+- advertising data (for example, ads you have seen) and product interactions (such as app launches and taps);
+- crash logs and performance data.
+
+This data is used by Google for advertising, analytics and to improve the SDK. **It never includes your listings, contracts, messages, payments or CCCD data** — those are not available to the SDK. When you choose to watch the rewarded video, your TMK account ID and a one-time session code are attached to that ad so the coin reward can be verified.
+
+Where required by law (for example in the EEA, the UK and Switzerland), the App asks for your consent before ads are personalised. On iPhone and iPad, the advertising identifier is shared only if you tap "Allow" on Apple's App Tracking Transparency prompt. You can reset or delete your advertising ID in your device settings.
+
+The rewarded video is never forced: you start it yourself to earn coins. Nothing else in the App is locked behind an ad.
+
+- Google's privacy policy: <https://policies.google.com/privacy>
+- How Google uses data from partner apps: <https://policies.google.com/technologies/partner-sites>
+
+---
+
+## Remove ads subscription
+
+"Remove ads" (Settings → Ads) is an optional subscription (3 months, renewing automatically until you cancel it in your App Store / Google Play account settings). Payment is handled entirely by Apple or Google; **we never receive your payment details**. While the subscription is active the App does not start the advertising SDK, so none of the advertising data above is collected, and no banner is shown.
 
 ---
 
@@ -172,3 +225,6 @@ Records that other accounts depend on (e.g., a rental contract co-signed with a 
 ## Changes to this policy
 
 When we make material changes, we update the `last_updated` date at the top and ship a new app version. Continued use after an update constitutes acceptance. Updates will clarify or expand your rights — never restrict them silently.
+
+</div>
+</article>
