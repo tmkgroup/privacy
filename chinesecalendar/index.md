@@ -3,8 +3,8 @@
 # "never share it with advertisers", sai với app này (Google AdMob).
 # Mẫu bê từ caribbean/index.md. Nguồn từng ý (2026-11-07, anh Truc "publish"):
 #  - tmk_chinese_calendar/lib/src/screens/privacy_app_screen.dart (màn Quyền riêng tư trong app: hasAccount false,
-#    hosts googleads / hko.gov.hk / 1823.gov.hk (chỉ vùng HK) / open-meteo.com, dữ liệu lưu máy, .tmkbak AES-256-GCM PBKDF2)
-#  - lib/src/services/hko_warning_service.dart:50 (www.hko.gov.hk weatherAPI), hk_holidays_remote.dart:35 (www.1823.gov.hk ical)
+#    hosts googleads / data.weather.gov.hk / 1823.gov.hk (chỉ vùng HK) / open-meteo.com, dữ liệu lưu máy, .tmkbak AES-256-GCM PBKDF2)
+#  - lib/src/services/hko_warning_service.dart:51 (data.weather.gov.hk weatherAPI, sửa 2026-11-07 vì www.hko.gov.hk trả 404), hk_holidays_remote.dart:35 (www.1823.gov.hk ical)
 #  - lib/src/services/location_service.dart:35-40 (thành phố dự phòng theo vùng), lib/src/screens/today_screen.dart:62,110
 #  - lib/src/services/calendar_sync_service.dart:18,37-40 (chỉ Apple Calendar; Google chưa có client id nên không hiện)
 #  - lib/src/monetization/app_ads.dart (UMP, AdMob banner + rewarded), remove_ads.dart (gói 3 tháng tự gia hạn)
@@ -58,7 +58,7 @@ The almanac, solar terms, public holidays and the divination and feng-shui tools
 
 When Hong Kong is the selected region, the App downloads:
 
-- weather warnings from the Hong Kong Observatory (www.hko.gov.hk);
+- weather warnings from the Hong Kong Observatory open data service (data.weather.gov.hk);
 - the public holiday calendar from 1823 of the Hong Kong Government (www.1823.gov.hk).
 
 These requests contain only the language of the data. Like any internet service, those servers receive your IP address in order to deliver the data.
