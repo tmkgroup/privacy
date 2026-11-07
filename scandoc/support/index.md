@@ -72,6 +72,22 @@ Scanned PDFs have no text layer, so **To Word** and **To Markdown** run text rec
 
 The **Settings** tab holds dark mode, five accent colours, the app language and the writing system used for text recognition. Your choices are remembered the next time you open the app.
 
+## Ads, and turning them off
+
+The free app shows one banner above the tab bar. It never appears while you are scanning.
+
+At the bottom of **Settings** you will find two ways to get rid of it:
+
+**Watch an ad, no ads for 24 hours.** One tap, one ad, and the banner disappears for a day. The button is greyed out while the ad is still loading, and again once the 24 hours have started — it then shows how many hours are left.
+
+**Remove ads** is a subscription: 3 months at a time, renewing automatically until you cancel it in your App Store or Google Play account settings. The price shown is the one your own store quotes. Payment goes through the store, never through us. While it is active the app loads no ads at all, so the rewarded-ad button disappears too.
+
+Changed phone, or reinstalled? Tap **Restore purchases** and the store hands the subscription back. If it says nothing was found, check that you are signed in with the same store account you bought it with.
+
+Nothing in Scan Doc is locked behind either of these. Scanning, text recognition, translating, exporting, signing, the page tools and all six PDF jobs are free whether or not you ever watch an ad or subscribe.
+
+If you are in the EEA, the UK or Switzerland, a third button, **Ad privacy options**, reopens the consent form so you can change what you agreed to.
+
 ## Privacy
 
 Read our [Privacy Policy](https://privacy.tmktechgroup.com/scandoc/).
