@@ -1,9 +1,16 @@
 ---
-layout: app-policy
+# India Calendar dung layout "default" (KHONG "app-policy") nhu Caribbean (caribbean/index.md):
+# master-policy ghi "never share it with advertisers", sai voi app nay (Google AdMob).
+# Nguon (2026-11-07, anh Truc "publish"):
+#  - tmk_india_calendar/lib/data/services/ad_service.dart (UMP consent, AdMob banner / rewarded / app open)
+#  - tmk_india_calendar/lib/data/services/iap_service.dart (com.tmkgroup.india.remove_ads_3m, 3-month auto-renew,
+#    refreshEntitlement() asks the store on every launch)
+#  - tmk_india_calendar/lib/shared/widgets/premium_paywall.dart (price shown by the store, Terms of Use + Privacy links)
+layout: default
 permalink: /india-calendar/
 title: India Calendar — Privacy Policy
 description: Privacy policy for India Calendar, the Hindu Panchang & Muhurat daily decision tool.
-last_updated: 2026-10-15
+last_updated: 2026-11-07
 
 # Per-app metadata read by _layouts/app-policy.html and the landing page loop.
 app_name: India Calendar
@@ -12,6 +19,18 @@ app_id: com.tmkgroup.india
 data_collected: "Nothing reaches our servers. You can save an encrypted backup file to YOUR own Drive / iCloud / device. Free tier shows AdMob ads."
 order: 20
 ---
+
+<article class="app-policy">
+  <p class="app-back"><a href="{{ '/' | relative_url }}">← All policies</a></p>
+  <header class="app-header">
+    <h1>India Calendar — Privacy Policy</h1>
+    <p class="app-meta">
+      <span>Bundle ID: <code>com.tmkgroup.india</code></span>
+      <span>Effective date: 2026-11-07</span>
+    </p>
+  </header>
+
+<div markdown="1">
 
 ## Summary
 
@@ -172,17 +191,20 @@ Branch, Adjust, Sentry, or the Facebook SDK.
 
 India Calendar offers **one optional in-app purchase**:
 
-- **India Premium — Lifetime** (`india_premium_lifetime`), a one-time
-  US$0.99 (≈ ₹89, €0.99) non-consumable purchase that removes all ads.
-  There is **no subscription, no recurring charge, no auto-renewal**.
+- **Remove ads** (`com.tmkgroup.india.remove_ads_3m`), an **auto-renewing
+  subscription** of US$1.00 (or the local equivalent shown by the store)
+  every 3 months that removes all ads while it is active.
+- The subscription renews automatically until you cancel it in your
+  App Store or Google Play subscription settings; cancelling keeps it
+  active until the end of the period you already paid for.
 - The transaction is processed **entirely by Apple App Store (StoreKit)
   on iOS** or **Google Play Billing on Android**. India Calendar never
   sees, receives, or stores your payment details, billing address or
   real name.
-- The app stores a single boolean on your device ("is premium = yes/no")
-  to know whether to hide ads. Restoring on a new device works through
-  Apple's / Google's own "Restore Purchases" mechanism — we do not
-  manage entitlements ourselves.
+- The app stores a single yes/no flag on your device to know whether to
+  hide ads, and asks the store on each launch whether the subscription
+  is still active. Restoring on a new device works through Apple's /
+  Google's own "Restore Purchases" mechanism.
 - Refunds, receipts and purchase history are handled by Apple or Google
   under their own terms and privacy policies:
   [Apple](https://www.apple.com/legal/privacy/) ·
@@ -240,3 +262,6 @@ We will update the "Last updated" date above and ship a new app version
 whenever this policy changes. Material changes (e.g. a new third-party
 service, or a new category of data we collect) will be highlighted in
 the in-app "What's new" screen on the next update.
+
+</div>
+</article>
