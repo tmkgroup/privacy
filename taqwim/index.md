@@ -1,174 +1,141 @@
 ---
-layout: app-policy
+# Taqwim dùng layout "default" (KHÔNG "app-policy"): master-policy ghi
+# "never share it with advertisers", sai với app này từ khi gắn Google AdMob (2026-11-07).
+# Nguồn từng ý (2026-11-07, anh Truc "publish"):
+#  - tmk_taqwim/lib/ads/app_ads.dart (UMP consent, MobileAds.initialize, banner + rewarded, mã AdMob thật)
+#  - tmk_taqwim/lib/ads/banner_ad_widget.dart · lib/ads/rewarded_ad_free.dart (AdFreeWindow 24 giờ)
+#  - tmk_taqwim/lib/services/remove_ads_service.dart:40 (com.tmkgroup.taqwim.remove_ads_3m)
+#  - tmk_taqwim/lib/providers/purchase_provider.dart:13-22 (taqwim_tip_small/medium/large, taqwim_supporter cũ)
+#  - tmk_taqwim/lib/providers/mosque_provider.dart:38,297 + halal_provider.dart:40,294
+#    (cdn-taqwim.tmkgroup.vn, overpass-api.de)
+#  - tmk_taqwim/lib/screens/mosque_map_screen.dart:20,24 + lib/utils/map_style.dart (tiles.openfreemap.org,
+#    tile.openstreetmap.org); package/tmk_map_kit/lib/src/map_server.dart:27 (map.tmkgroup.vn — chỉ tile VN)
+#  - tmk_taqwim/lib/services/quran_service.dart + lib/screens/credits_screen.dart (verses.quran.com, tanzil.net)
+#  - tmk_taqwim/android/app/src/main/AndroidManifest.xml (quyền; ACCESS_FINE_LOCATION bỏ 2026-11-07)
+#  - tmk_taqwim/ios/Runner/Info.plist (purpose strings + NSUserTrackingUsageDescription)
+#  - developers.google.com/admob/ios/privacy/data-disclosure (đọc 2026-11-06, bản ghi ở caribbean/index.md)
+layout: default
 permalink: /taqwim/
-title: Taqwim — Privacy Policy
-description: Privacy policy for Taqwim, the privacy-first Islamic calendar and prayer-times app.
-last_updated: 2026-05-10
-
-# Per-app metadata read by _layouts/app-policy.html and the landing page loop.
+title: "Taqwim — Privacy Policy"
+description: "Privacy policy for Taqwim, the Islamic calendar, prayer times and Qibla app."
+last_updated: 2026-11-07
 app_name: Taqwim
 app_subtitle: Islamic Calendar & Prayer Times
 app_id: com.tmkgroup.taqwim
-data_collected: "None — Taqwim is fully offline and stores all data on your device only."
+data_collected: "No account. Prayer logs, notes, diary and Quran progress stay on your device. Mosque and halal search and Quran audio are fetched online. Google AdMob ads collect device data."
 order: 10
 ---
 
-## Summary
+<article class="app-policy">
+  <p class="app-back"><a href="{{ '/' | relative_url }}">← All policies</a></p>
+  <header class="app-header">
+    <h1>Taqwim — Privacy Policy</h1>
+    <p class="app-meta">
+      <span>Bundle ID: <code>com.tmkgroup.taqwim</code></span>
+      <span>Effective date: 2026-11-07</span>
+    </p>
+  </header>
 
-**Taqwim is fully offline. We collect nothing.**
+<div markdown="1">
 
-There is no account, no sign-in, no analytics SDK, no advertising SDK,
-no crash reporter, and no remote backend. Everything you do in the
-app — prayer logs, notes, bookmarks, hifz progress, dua wall entries,
-sadaqah ledger — is stored exclusively on your device, in encrypted
-local storage you alone control.
+This Privacy Policy explains how the mobile app **Taqwim** ("the App"), published by **TMK Tech Group** ("we", "us"), handles information. The App is not directed to children under 13.
 
-If you uninstall Taqwim, every byte of data the app ever had is gone
-with it. We cannot recover anything for you, and neither can anyone
-else, because no copy ever left your phone.
+## 1. No account
 
-## Data we collect
+- The App has no TMK account and no sign-in to our servers.
+- We do not ask for your name, email address or phone number.
 
-### From you, automatically
+## 2. Information stored only on your device
 
-**None.** Taqwim has no telemetry, no analytics, no crash reporting,
-and no remote backend. We have no way to identify you, see what you
-do in the app, or know that you exist as a user.
+The App saves on your device: your language, theme and calculation settings, saved locations, prayer log and sunnah rakat counts, notes, diary entries, bookmarks, dua wall entries, sadaqah ledger, habit and Hajj checklists, Hayd cycle log, Quran reading and hifz progress, and whether you have removed ads. This information is not sent to us. Uninstalling the App removes it.
 
-### From you, with your consent
+You can export an encrypted backup file (`.tmkbak`, AES-256-GCM, protected by a passphrase you choose). The file goes only where you save or share it; we never receive it. If you lose the passphrase, nobody can open the backup, including us.
 
-Two pieces of data stay on your device only:
+## 3. Location
 
-- **Approximate location** (Android: `ACCESS_COARSE_LOCATION` /
-  `ACCESS_FINE_LOCATION`; iOS: `NSLocationWhenInUseUsageDescription`)
-  — used **only** to compute prayer times and Qibla direction for your
-  current city. It is never uploaded, never logged remotely, and never
-  shared with any third party. You can disable this and enter
-  coordinates manually instead.
-- **Camera access** (Android: `CAMERA`; iOS: `NSCameraUsageDescription`)
-  — used **only** when you tap "AR Qibla" to overlay the Qibla
-  direction on your camera view. No image, video, or frame is saved or
-  transmitted. The camera turns off the moment you leave that screen.
+If you allow location access, the App reads your **approximate** position (Android `ACCESS_COARSE_LOCATION`; iOS "when in use") to compute prayer times and the Qibla direction, and to search for mosques and halal places near you. The coordinates are not sent to us. You can refuse location access and enter coordinates or pick a city by hand instead.
 
-### From your device, locally
+## 4. Mosques and halal places
 
-Stored in encrypted on-device storage (`tmk_storage_package`):
+- The App first asks our server **cdn-taqwim.tmkgroup.vn** for the ready-made list of mosques or halal places of a country; that request contains only the country code.
+- If no list exists for your country, the App queries the public **Overpass API** (overpass-api.de, OpenStreetMap data) with the map area around you.
+- Map images come from **tiles.openfreemap.org** and **tile.openstreetmap.org**. Inside Vietnam, map tiles and driving directions come from our own server **map.tmkgroup.vn**.
 
-- Prayer log (which prayers you marked as done / on time / in jamaah)
-- Sunnah ratibah rakat counts
-- Notes, bookmarks, dua wall entries, sadaqah log
-- Quran reading progress (last read, hifz progress, khatm planner)
-- Settings (calculation method, madhab, language, theme, etc.)
-- Saved locations (with names you chose)
-- Hayd cycle log (if used)
+Like any internet service, these servers receive your IP address in order to answer. No identifier of you is sent.
 
-This data is **never** uploaded anywhere. It is yours, and only yours.
+## 5. Quran text and audio
 
-## Permissions explained
+The Quran text and the bundled translations ship inside the App (source: the Tanzil Project, tanzil.net) and need no connection. When you tap **Play** on a verse, the App downloads that one audio file from the public CDN **verses.quran.com** run by quran.com, and caches it on your device for offline replay. If you never tap Play, no audio request is made.
 
-| Permission | Why Taqwim needs it |
+## 6. Advertising (Google AdMob)
+
+The free version shows ads using the Google Mobile Ads SDK (Google AdMob). According to Google, the SDK may collect:
+
+- coarse location, including location derived from the IP address
+- a device ID, such as the advertising identifier
+- advertising data (for example, ads you have seen) and product interactions (such as app launches and taps)
+- crash logs and performance data
+
+This data is used by Google for advertising, analytics and to improve the SDK. Where required by law (for example in the EEA, the UK and Switzerland), the App asks for your consent before ads are personalised. On iPhone and iPad, the advertising identifier is shared only if you tap "Allow" on Apple's App Tracking Transparency prompt. You can reset your advertising identifier in your device settings.
+
+The ad SDK cannot see what you write in the App — your prayer log, notes, diary, dua wall entries and Quran progress are never passed to it. **No feature of the App is locked behind an ad.** There is one optional rewarded ad: watching it hides the banners for 24 hours. Watching it is your choice.
+
+- Google's privacy policy: <https://policies.google.com/privacy>
+- How Google uses data from partner apps: <https://policies.google.com/technologies/partner-sites>
+
+## 7. Remove ads subscription
+
+"Remove ads" (`com.tmkgroup.taqwim.remove_ads_3m`) is an optional subscription (3 months, renews automatically until you cancel). Payment is handled entirely by the Apple App Store or Google Play; we do not receive your payment details, billing address or real name. While it is active, the App does not start the advertising SDK.
+
+## 8. Tips
+
+The App also offers optional one-time tips. They unlock nothing — every feature is free whether you tip or not. A one-time "Supporter" purchase sold up to version 1.4.2 is still honoured for its thank-you state; the 30-day prayer log it used to unlock is now free for everyone.
+
+Refunds, receipts and purchase history are handled by Apple or Google under their own terms: [Apple](https://www.apple.com/legal/privacy/) · [Google](https://policies.google.com/privacy).
+
+## 9. Notifications
+
+Adhan, pre-prayer and iqamah reminders, suhoor and iftar, Tahajjud, Jumu'ah, the daily verse and hadith and eclipse alerts are scheduled by your own phone and work offline. Nothing about them is sent to us. You can turn them off in your device settings.
+
+## 10. Permissions
+
+| Permission | Why |
 |---|---|
-| Location (when in use) | Compute prayer times and Qibla — never uploaded. Optional; you can use manual coordinates. |
-| Camera | AR Qibla mode only. Frames are never recorded or shared. Optional. |
-| Notifications | Prayer adhan, pre-prayer reminders, iqamah, suhoor, iftar, Tahajjud, Jumu'ah, daily verse, daily hadith, eclipse alerts. Generated on-device only. |
-| Exact alarm (Android 12+) | Required by Android so prayer notifications fire at the precise minute, not "approximately". |
-| Boot completed (Android) | Re-arms scheduled prayer notifications after a phone reboot. No network access. |
+| Location (approximate, when in use) | Prayer times, Qibla, nearby mosques and halal places. Optional — you can enter a place by hand. |
+| Camera | AR Qibla screen only. No image, video or frame is saved or transmitted. Optional. |
+| Notifications | The prayer and reminder alerts you set. |
+| Exact alarm (Android 12+) | So prayer notifications fire at the exact minute. |
+| Boot completed (Android) | Re-arms scheduled prayer notifications after a reboot. |
 | Vibrate | Tasbih counter feedback. |
+| Photo library (iOS) | Choosing a backup file to import. |
+| Tracking (iOS) | Personalised ads, only if you tap "Allow". |
 
-You can revoke any permission in your device settings at any time.
-The app gracefully falls back (e.g. silent notifications, manual
-location) when a permission is denied.
+You can revoke any permission in your device settings at any time; the App keeps working with reduced features.
 
-## Third-party services
+## 11. Data retention
 
-Taqwim uses **one** optional internet service, only when you ask it to:
+- On-device data: kept until you delete it in **Settings → Reset all data** or uninstall the App.
+- We hold no copy of your data, so there is nothing for us to retain or delete.
 
-- **Quran ayah audio (CDN)**. When you tap "Play" on a Quran verse,
-  the app fetches that one MP3 file from
-  `https://verses.quran.com/...` (a public CDN run by quran.com). The
-  request includes only the standard HTTP headers any browser would
-  send. The downloaded file is cached on your device for offline replay.
-  If you never tap "Play", no audio request is ever made.
+## 12. Children
 
-- **Mosque map tiles** (when you open the in-app mosque map, only
-  while that screen is open). Tiles are fetched from the OpenStreetMap
-  community tile server. The request includes only the standard HTTP
-  headers. No identifier of you is sent.
+The App is not directed to children under 13, and we do not knowingly collect personal information from children under 13.
 
-We do not use Google Analytics, Firebase Analytics, Mixpanel,
-AppsFlyer, Sentry, Crashlytics, AdMob, Facebook SDK, or any similar
-third-party SDK. You can verify this by searching the public source
-code or by inspecting the APK with any tool of your choice.
+## 13. Your rights
 
-## In-app purchases
+- **Access**: open the App; the in-app data is the whole record.
+- **Export**: the encrypted backup in Settings.
+- **Delete**: "Reset all data" in Settings, or uninstall.
+- **Correct**: edit any field on the relevant screen.
+- **Object / restrict**: revoke permissions in your device settings; decline ad personalisation in the consent screen.
 
-Taqwim offers **one optional in-app purchase** — "Supporter", a one-time
-tip to support development. It is entirely optional; every feature of
-the app remains fully usable whether you buy it or not.
+## 14. Changes to this policy
 
-- The transaction is processed **entirely by Apple App Store
-  (StoreKit) on iOS** or **Google Play Billing on Android**. Taqwim
-  never sees, receives, or stores your payment details, billing
-  address, or real name.
-- The app only learns whether the purchase succeeded — a single
-  on-device boolean — so it can show a "thank you" state. Nothing about
-  the purchase is sent to us or to any third party.
-- There is no subscription, no recurring charge, and no auto-renewal.
-- Refunds, receipts, and purchase history are handled by Apple or
-  Google under their own terms and privacy policies:
-  [Apple](https://www.apple.com/legal/privacy/) ·
-  [Google](https://policies.google.com/privacy).
+If we change this policy, we will update the effective date above and publish the new version at the same address.
 
-## Backups
+## 15. Contact
 
-Taqwim includes an **optional, on-device, passphrase-encrypted backup
-feature**. When you create a backup:
+TMK Tech Group — [tmktechgroup@gmail.com](mailto:tmktechgroup@gmail.com)
 
-- The file is AES-encrypted with the passphrase **you** type. We do
-  not see, store, or transmit your passphrase.
-- The backup file lives wherever you save it — your phone, your USB
-  drive, your own cloud drive. We never receive a copy.
-- If you lose the passphrase, **no one** — not us, not anyone — can
-  recover the backup. That is by design.
-
-## Data retention
-
-- On-device data: kept until you delete it or uninstall the app.
-- Off-device data: there is no off-device data to retain.
-
-## Children's privacy
-
-Taqwim is suitable for all ages. Because we collect no personal data,
-the app cannot identify the age of any user. We do not knowingly
-collect data from children under 13 (or 16 in the EU); we do not
-collect data from anyone.
-
-## Your rights
-
-You have full control because the data lives on your device:
-
-- **Access**: open the app and look at it; the in-app data is the
-  whole record.
-- **Export**: use the in-app encrypted backup feature.
-- **Delete**: use the in-app "Reset all data" in Settings, or just
-  uninstall the app.
-- **Correct**: edit any field in the relevant in-app screen.
-- **Object / restrict**: revoke permissions in your device settings;
-  Taqwim continues to work with reduced features.
-
-You may also contact [dev@tmkgroup.vn](mailto:dev@tmkgroup.vn) for any
-question, but we cannot delete what we never had.
-
-## Source code transparency
-
-Taqwim's promise of "no data leaves your device" is independently
-verifiable. The app's source code is open for inspection, and the
-public commits in the [TMK Group privacy repository](https://github.com/tmkgroup/privacy)
-record any change to this policy with a timestamp.
-
-## Changes to this policy
-
-We will update the "Last updated" date above and ship a new app
-version whenever this policy changes. Because Taqwim collects no data,
-any change to the policy will only clarify or expand your rights — never
-restrict them.
+</div>
+</article>
