@@ -1,9 +1,8 @@
 ---
 # Trang hỗ trợ TMK Land (tạo 2026-11-07, bê bố cục scandoc/support/index.md). Nguồn từng ý:
 #  - store-assets/tmk_land/metadata/review_notes.txt (đăng nhập, Tài sản / góp vốn, Trung tâm giao dịch, cho thuê, xu, xoá tài khoản)
-#  - tmk_land/lib/presentation/pages/settings/settings_page.dart (mục Quảng cáo, Xoá tài khoản)
-#  - tmk_land/lib/presentation/widgets/ads/remove_ads_card.dart (Đăng ký / Khôi phục giao dịch)
-#  - tmk_land/lib/presentation/pages/main/utility_page.dart (banner sau lưới Tiện ích)
+#  - tmk_land/lib/presentation/pages/settings/settings_page.dart (Xoá tài khoản)
+#  - 2026-11-07 anh "land bỏ quảng cáo": bỏ mục quảng cáo / gói Bỏ quảng cáo (Land không chạy quảng cáo)
 #  - email liên hệ: store-assets/tmk_land/metadata/vi/description.txt
 layout: default
 permalink: /tmk_land/support/
@@ -40,13 +39,11 @@ In the **Assets** tab, co-owners record each person's contribution, schedule and
 
 ## Coins
 
-Coins are an in-app item used to buy listing packages. They cannot be withdrawn or exchanged for cash. **Wallet → Missions** offers an optional video ad you can watch to earn coins.
+Coins are an in-app item used to buy listing packages. They cannot be withdrawn or exchanged for cash.
 
-## Ads, and turning them off
+## Ads
 
-The free app shows a banner below the Utilities grid. **Settings → Ads** has **Remove ads**: a subscription of 3 months at a time, renewing automatically until you cancel it in your App Store or Google Play account settings. The price shown is the one your own store quotes; payment goes through the store, never through us. While it is active the app loads no ads.
-
-Changed phone, or reinstalled? Tap **Restore purchases** in the same place. If nothing is found, check that you are signed in to the same store account you subscribed with.
+TMK Land shows no ads.
 
 ## Deleting your account
 
