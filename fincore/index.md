@@ -1,136 +1,163 @@
 ---
-layout: app-policy
+# Fincore dùng layout "default" (KHÔNG "app-policy") như Scan Doc / Caribbean Calendar / Xiangqi Clash:
+# _includes/master-policy.md ghi "never share it with advertisers", sai với app này từ 2026-11-11
+# (app đã gắn Google AdMob — anh Truc "Gắn Fincore đi").
+# Nguồn từng ý (2026-11-11):
+#  - tmk_fincore/lib/ads/app_ads.dart (UMP consent, khởi động SDK sau khi đồng ý)
+#  - tmk_fincore/lib/ads/banner_host.dart + banner_ad_widget.dart (banner dưới mọi màn), rewarded_ad_free.dart (24 giờ tắt quảng cáo)
+#  - tmk_fincore/lib/ads/remove_ads_service.dart (gói com.tmkgroup.fincore.remove_ads_3m, 3 tháng)
+#  - tmk_fincore/ios/Runner/Info.plist (NSUserTrackingUsageDescription, GADApplicationIdentifier)
+#  - bảng Permissions, mục Backups, email liên hệ: giữ nguyên ý bản 2026-05-12 (chỉ thêm dòng Tracking)
+#  - package/tmk_spendly_package/lib/src/services/spendly_rates_service.dart (10 máy chủ tỉ giá / giá thị trường, chỉ GET)
+#  - các mục Permissions / Backups / Data retention / Children / Your rights giữ ý của bản 2026-05-12
+#  - developers.google.com/admob/ios/privacy/data-disclosure (danh sách dữ liệu SDK quảng cáo thu,
+#    bê nguyên câu chữ của scandoc/index.md mục 5)
+layout: default
 permalink: /fincore/
 title: "Fincore — Privacy Policy"
 description: "Privacy policy for Fincore, the offline personal finance tracker."
-last_updated: 2026-05-12
-
+last_updated: 2026-11-11
 app_name: Fincore
 app_subtitle: Personal Income & Expense Tracker
 app_id: com.tmkgroup.fincore
-data_collected: "None — Fincore is fully offline and stores all data on your device only."
+data_collected: "No account. Your transactions stay on your device. Google AdMob ads collect device data; the Remove ads subscription turns them off."
 order: 30
 ---
 
-## Summary
+<article class="app-policy">
+  <p class="app-back"><a href="/">← All policies</a></p>
+  <header class="app-header">
+    <h1>Fincore — Privacy Policy</h1>
+    <p class="app-meta">
+      <span>Bundle ID: <code>com.tmkgroup.fincore</code></span>
+      <span>Effective date: 2026-11-11</span>
+    </p>
+  </header>
 
-**Fincore is fully offline. We collect nothing.**
+<div markdown="1">
 
-There is no account, no sign-in, no analytics SDK, no advertising SDK,
-no crash reporter, and no remote backend. Every transaction, category,
-note, and recurring payment you record lives in encrypted local storage
-on your device — and nowhere else.
+This Privacy Policy explains how the mobile app **Fincore** ("the App"), published by **TMK Tech Group**
+("we", "us"), handles information. The App is not directed to children under 13.
 
-If you uninstall Fincore, every byte of data the app ever had is
-gone with it. We cannot recover anything for you, and neither can anyone
-else, because no copy ever left your phone.
+## 1. In short
 
-## Data we collect
+**Every transaction you record stays on your device. We run no server and we collect nothing.**
 
-### From you, automatically
+There is no account, no sign-in, no analytics SDK, no crash reporter and no backend of ours. Every
+transaction, category, note and recurring payment you record lives in encrypted local storage on your
+device, and nowhere else. If you uninstall Fincore, every byte of that is gone with it; we cannot recover
+anything for you, because no copy ever left your phone.
 
-**None.** Fincore has no telemetry, no analytics, no crash
-reporting, and no remote backend. We have no way to identify you, see
-what you record in the app, or know that you exist as a user.
+Three things do use the network, and none of them carries a record of yours: **Google's advertising SDK**
+(section 5), the **store** when you buy or restore the Remove ads subscription (section 6), and the
+**exchange-rate and market-price lookups** of the currency converter and market screens (section 4).
 
-### From you, with your consent
+## 2. No account
 
-- **Notification permission** (Android 13+: `POST_NOTIFICATIONS`; iOS:
-  standard permission) — used **only** to send locally-scheduled
-  reminders when a recurring payment is coming due. No notification
-  content is uploaded or sent off-device. You can deny this permission
-  and the rest of the app works normally.
+- The App has no TMK account and no sign-in to our servers.
+- We do not ask for your name, email address or phone number.
+- We have no way to identify you, see what you record in the App, or know that you exist as a user.
 
-### From your device, locally
+## 3. What is stored on your device
 
-Stored in encrypted on-device storage (`tmk_storage_package` — AES on
-top of SQLite / SharedPreferences):
+Stored in encrypted on-device storage:
 
-- Income and expense transactions (amount, date, category, notes you typed)
-- Categories and tags you created
-- Recurring payment rules and their due dates
-- Settings (language, theme, currency format, notification toggles)
-- Scheduled notification triggers (stored locally to fire reminders)
+- income and expense transactions (amount, date, category, notes you typed);
+- categories, accounts, budgets and saving goals you created;
+- recurring payment rules and their due dates, and the scheduled reminder triggers;
+- your settings: language, theme, accent colour, currency format, notification toggles, and the end time of
+  a 24-hour ad-free window if you watched a rewarded ad.
 
-This data is **never** uploaded anywhere. It is yours, and only yours.
+This data is never uploaded to us.
 
-## Permissions explained
+### Permissions
 
 | Permission | Why Fincore needs it |
 |---|---|
-| Notifications | Locally-scheduled payment-due reminders. Never sent to a server. Optional — the app works without it. |
+| Notifications | Locally-scheduled payment-due reminders. Never sent to a server. Optional — the App works without it. |
 | Exact alarm (Android 12+) | Required by Android so payment reminders fire at the exact scheduled minute, not "approximately". |
 | Boot completed (Android) | Re-arms scheduled payment reminders after a phone reboot. No network access. |
-| Read / write external storage (Android < 13 / < 10) | Required by older Android versions when you open the system file-picker or share sheet to export a backup file. The app only reads files you explicitly pick. |
+| Read / write external storage (Android < 13 / < 10) | Required by older Android versions when you open the system file picker or share sheet for a backup file. The App only reads files you explicitly pick. |
+| Tracking (iPhone and iPad) | Personalised ads, only if you tap "Allow" on Apple's prompt. |
 
-You can revoke any permission in your device settings at any time.
-The app continues to work with reduced features (e.g. no reminders) when a permission is denied.
+You can revoke any permission in your device settings at any time. The App keeps working with fewer features.
 
-## Third-party services
+## 4. Exchange rates and market prices
 
-**None.** Fincore does not connect to any external service. There is
-no Google Analytics, Firebase Analytics, Crashlytics, Sentry, AdMob,
-Facebook SDK, or any other telemetry or advertising endpoint.
+The currency converter and the market screens download public exchange rates and prices (currencies, gold,
+crypto, stocks) from these services: open.er-api.com, api.frankfurter.dev, sjc.com.vn, api.binance.com,
+api.coingecko.com, query1.finance.yahoo.com, api.fiscaldata.treasury.gov, data-api.ecb.europa.eu and
+techcombank.com. These are plain downloads of public data: **no transaction, amount or note of yours is
+sent**. Each service sees an ordinary web request (including your IP address) under its own privacy policy.
 
-You can verify this by inspecting network traffic — there is none.
+## 5. Advertising (Google AdMob)
 
-The only optional file-sharing activity is the standard OS-level share
-sheet (Android / iOS) which your device OS controls when you choose to
-export a backup. That transfer goes to wherever *you* direct it — not
-to TMK Group.
+The free version shows a banner at the bottom of the screen and offers an optional rewarded ad, using the
+Google Mobile Ads SDK (Google AdMob). According to Google, the SDK may collect:
 
-## Backups (yours to save anywhere)
+- coarse location, including location derived from the IP address;
+- a device ID, such as the advertising identifier;
+- advertising data (for example, ads you have seen) and product interactions (such as app launches and taps);
+- crash logs and performance data.
 
-Fincore includes a **passphrase-encrypted backup feature**
-(Settings → Backup & Restore → Export Backup).
+This data is used by Google for advertising, analytics and to improve the SDK. **It never includes your
+transactions, amounts, categories or notes** — those are not available to the SDK.
 
-When you create a backup:
+Where required by law (for example in the EEA, the UK and Switzerland), the App asks for your consent before
+ads are personalised, and you can change your choice at any time with the "Ad privacy options" button in
+the More tab. On iPhone and iPad, the advertising identifier is shared only if you tap "Allow" on Apple's App
+Tracking Transparency prompt. You can reset or delete your advertising ID in your device settings.
 
-- A `.tmkbak` file is produced, encrypted with AES using the passphrase
-  **you** type. We do not see, store, or transmit your passphrase.
-- The app opens the **system share sheet**. From there *you* choose
-  where the file goes — for example:
-  - **iOS**: "Save to Files" → iCloud Drive, On My iPhone, or any
-    Files-provider app you have installed (Dropbox, OneDrive, etc.).
-  - **Android**: "Save to Drive", "Save to Files", or any app that can
-    receive a file (Gmail attachment, Telegram, etc.).
-- TMK Group never receives a copy. The file goes only where you send it.
-- To restore, tap Import Backup, pick the file from wherever you saved
-  it, and re-enter the same passphrase.
-- If you lose the passphrase, **no one** — not us, not anyone — can
-  recover the backup. That is by design.
+The **rewarded ad** is never forced: you tap it yourself in the More tab to turn ads off for 24 hours. Nothing
+in the App is locked behind it — recording, reports, budgets, saving goals, reminders, the currency converter
+and backups are free whether or not you watch an ad.
 
-## Data retention
+- Google's privacy policy: <https://policies.google.com/privacy>
+- How Google uses data from partner apps: <https://policies.google.com/technologies/partner-sites>
 
-- **On-device data**: kept until you delete it in the app or uninstall.
-- **Off-device data**: there is no off-device data held by us. Any
-  `.tmkbak` file you saved elsewhere stays wherever you put it, for as
-  long as you keep it. Delete the file from that location to remove it.
-  We never had a copy.
+## 6. Remove ads subscription
 
-## Children's privacy
+"Remove ads" is an optional subscription (3 months, renewing automatically until you cancel it in your store
+account settings). Payment is handled entirely by the Apple App Store or Google Play; **we never receive your
+payment details**. While the subscription is active the App does not start the advertising SDK at all, so none
+of the data in section 5 is collected.
 
-Fincore is suitable for all ages. Because we collect no personal data
-and operate no server, the app cannot identify the age of any user. We
-do not knowingly collect data from children under 13 (or 16 in the EU);
-we do not collect data from anyone.
+## 7. Backups (yours to save anywhere)
 
-## Your rights
+Fincore includes a **passphrase-encrypted backup feature**. When you create a backup:
 
-You have full control because the data lives on your device:
+- A `.tmkbak` file is produced, encrypted with AES using the passphrase **you** type. We do not see, store,
+  or transmit your passphrase.
+- The App opens the **system share sheet**. From there *you* choose where the file goes (Files, iCloud Drive,
+  Google Drive, an email attachment, and so on). TMK Tech Group never receives a copy.
+- To restore, pick the file from wherever you saved it and re-enter the same passphrase.
+- If you lose the passphrase, **no one** — not us, not anyone — can recover the backup. That is by design.
 
-- **Access**: every transaction and record is visible inside the app.
-- **Export**: use the in-app backup feature to produce a `.tmkbak` file
-  containing all your data.
-- **Delete**: use "Reset all data" in Settings, or uninstall the app.
-- **Correct**: edit any transaction or category directly inside the app.
-- **Object / restrict**: revoke any permission in your device settings;
-  the app continues to work with reduced features (e.g. no reminders).
+## 8. Data retention
 
-You may also contact [dev@tmkgroup.vn](mailto:dev@tmkgroup.vn) for any
-question — but we cannot delete what we never had.
+On-device data is kept until you delete it in the App or uninstall Fincore. There is no off-device data held
+by us. Any `.tmkbak` file you saved elsewhere stays wherever you put it, for as long as you keep it; delete
+the file from that location to remove it.
 
-## Changes to this policy
+## 9. Children
 
-We will update the "Last updated" date above and ship a new app version
-whenever this policy changes.
+Fincore is suitable for all ages and is not directed to children under 13. Because we collect no personal
+data and operate no server, the App cannot tell the age of any user. We do not knowingly collect data from
+children under 13, or 16 in the EU; we do not collect data from anyone.
+
+## 10. Your rights
+
+You have full control because the data lives on your device. Every transaction and record is visible inside
+the App. The backup feature exports all of it in one `.tmkbak` file. You can edit any transaction or category
+directly in the App, delete records, or uninstall the App to remove everything. Revoking a permission in your
+device settings leaves the App working with reduced features (for example, no reminders).
+
+You may also contact [dev@tmkgroup.vn](mailto:dev@tmkgroup.vn) with any question, but we cannot delete what
+we never had.
+
+## 11. Changes to this policy
+
+We will update the "Effective date" above and ship a new app version whenever this policy changes.
+
+</div>
+</article>
