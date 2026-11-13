@@ -1,158 +1,234 @@
 ---
-# Medimo dùng layout "default" như Fincore / Scan Doc: app có Google AdMob nên KHÔNG dùng master-policy ("never share it with advertisers").
-# Tạo 2026-11-12 (anh Truc "Tạo GDPR 5 app" — ô GDPR trên AdMob bắt buộc URL chính sách, Medimo chưa có trang).
-# Nguồn từng ý:
-#  - mục 3, 4 (HealthKit), 6 (chia sẻ gia đình), 7 (sao lưu), BLE, Children, Your rights, email liên hệ:
-#    bê ý bản trong app tmk_medimo/lib/features/legal/data/legal_content.dart:109-175 (en)
-#  - bảng Permissions: tmk_medimo/android/app/src/main/AndroidManifest.xml + ios/Runner/Info.plist (các khoá NS*UsageDescription)
-#  - mục 5 (tìm nơi gần + bản đồ): tmk_medimo/lib/features/find_nearby/services/overpass_service.dart:47-55,
-#    package/tmk_map_kit/lib/src/map_server.dart:27-69, find_nearby/models/nearby_place_model.dart:27 (link Google Maps)
-#  - OCR phiếu xét nghiệm trên máy: tmk_medimo/pubspec.yaml (google_mlkit_text_recognition, ghi chú "offline")
-#  - mục 8 + 9 (quảng cáo, gói Bỏ quảng cáo): tmk_medimo/lib/ads/*.dart, lib/core/services/remove_ads_service.dart:37
-#    (com.tmkgroup.medimo.remove_ads_3m), rewarded_ad_free.dart:33 (24 giờ); câu chữ danh sách dữ liệu SDK bê từ fincore/index.md mục 5
-layout: default
+layout: app-policy
 permalink: /medimo/
-title: "Medimo — Privacy Policy"
-description: "Privacy policy for Medimo, the local-first family health record."
-last_updated: 2026-11-12
+title: Medimo — Privacy Policy
+description: Privacy policy for Medimo, the offline-first family health record app.
+last_updated: 2026-11-13
+
+# Per-app metadata read by _layouts/app-policy.html and the landing page loop.
 app_name: Medimo
-app_subtitle: Family Health Records
-app_id: com.tmkgroup.medimo
-data_collected: "No account. Your health records stay on your device. Google AdMob ads collect device data; the Remove ads subscription turns them off."
-order: 31
+app_subtitle: Family health records, vaccines, vitals and reminders
+app_id: vn.tmkgroup.tmk_medimo
+data_collected: "No health data reaches our servers. Everything stays in encrypted on-device storage. The free tier shows AdMob ads."
+order: 40
 ---
 
-<article class="app-policy">
-  <p class="app-back"><a href="/">← All policies</a></p>
-  <header class="app-header">
-    <h1>Medimo — Privacy Policy</h1>
-    <p class="app-meta">
-      <span>Bundle ID: <code>com.tmkgroup.medimo</code></span>
-      <span>Effective date: 2026-11-12</span>
-    </p>
-  </header>
+## Summary
 
-<div markdown="1">
+**Medimo stores your family's health records on your device only.**
 
-This Privacy Policy explains how the mobile app **Medimo** ("the App"), published by **TMK Tech Group**
-("we", "us"), handles information.
+There is no account, no sign-in, no TMK Group server holding your data,
+no analytics SDK and no crash reporter. Medical records, vaccination
+schedules, vital-sign readings, medication reminders, symptoms,
+pregnancy entries and the emergency medical ID all live in encrypted
+on-device storage (Hive) and nowhere else.
 
-## 1. In short
+Three things can leave your device, and only when you act or when the
+free tier shows an ad:
 
-**Your health data is sensitive. Medimo is built local-first: your records stay on your device unless you
-choose to back them up.** Medimo does not send your health data to our servers.
+1. **A backup file you choose to save or share** through the system
+   share sheet — to your own Drive, Files app, email or a cable.
+2. **Anonymous ad-serving signals** to Google AdMob (free tier only; the
+   "Remove ads" subscription turns these off).
+3. **A search for clinics near you** (only when you open *Find nearby*),
+   sent to an OpenStreetMap Overpass endpoint as coordinates and a
+   radius — never with any of your health data attached.
 
-Four things use the network, and none of them carries a health record of yours: **Google's advertising SDK**
-(section 8), the **store** when you buy or restore the Remove ads subscription (section 9), the **find
-nearby** search and its map (section 5), and links you tap that open Google Maps or another app.
+## Data we collect
 
-## 2. No account
+### From you, automatically
 
-- The App has no account and no sign-in to our servers.
-- There is no server account to delete.
+- **Anonymous ad signals (free tier only).** When the app shows a banner
+  or a rewarded ad, Google AdMob receives the standard ad-request
+  signals (device language, coarse location derived from IP, the
+  Advertising ID, app version). In the EU/UK Google's UMP consent form
+  is shown before any ad loads. **Subscribers see no ads, and no ad
+  signals are sent for them.**
+- **No analytics, no crash reporting, no Firebase Analytics, no
+  Crashlytics, no Mixpanel, no AppsFlyer, no Sentry, no Facebook SDK,
+  no TMK account server, no sign-in.** We do not measure your in-app
+  behaviour and we do not host an account or a sync server. There is
+  nothing to sign up for.
+- **Your health data is never used for advertising.** Nothing you record
+  in Medimo is sent to AdMob or to any other third party.
 
-## 3. What is stored on your device
+### From you, with your consent
 
-Profiles (name, date of birth, contact, optional photo), medical records, vaccines, vitals, medications,
-wellness logs (activity, water, sleep, nutrition, mood, cycle, growth), appointments, documents, allergies
-and settings. All of this lives in an encrypted Hive store on your device.
+- **Notifications** (Android 13+: `POST_NOTIFICATIONS`; iOS: standard
+  permission) — for medication reminders, vaccine due dates and
+  appointment alerts you set up. All scheduled on-device.
+- **Exact alarms** (Android 12+: `SCHEDULE_EXACT_ALARM` /
+  `USE_EXACT_ALARM`) — so a medication reminder fires at the minute you
+  chose instead of being batched by the system.
+- **Camera** (Android: `CAMERA`; iOS: `NSCameraUsageDescription`) — to
+  scan a QR code and to photograph a lab result or prescription. Text
+  recognition runs **on the device** with Google ML Kit's on-device
+  model; the picture is not uploaded.
+- **Bluetooth** (Android: `BLUETOOTH_SCAN` with `neverForLocation`,
+  `BLUETOOTH_CONNECT`, plus `BLUETOOTH`, `BLUETOOTH_ADMIN` and
+  `ACCESS_FINE_LOCATION` on Android 11 and older, where the system
+  requires it for any BLE scan) — to read measurements from a blood
+  pressure monitor, glucometer or smart scale over standard GATT. The
+  readings go straight into your on-device store.
+- **Location** (Android: `ACCESS_FINE_LOCATION`; iOS:
+  `NSLocationWhenInUseUsageDescription`) — used **only** when you open
+  *Find nearby* or set the address of a clinic, to search for places
+  around you. The coordinates are used for that one request and are not
+  stored by us.
+- **Health Connect (Android) / Apple HealthKit (iOS)** — read-only
+  access to the metrics you tick in the system dialog (steps, distance,
+  calories, exercise, sleep, heart rate, resting heart rate, blood
+  pressure, blood glucose, oxygen saturation, body temperature,
+  respiratory rate, weight, height, body fat, hydration). The data is
+  copied into Medimo's on-device store so it can appear next to your
+  own entries. It is never uploaded, never shared, and never used for
+  advertising. You can revoke the access at any time in Health Connect
+  or in the iOS Health app.
 
-Text recognition of a lab report you photograph runs on your device (Google ML Kit text recognition); the
-photo is not uploaded by the App.
+### From your device, locally
 
-### Permissions
+Stored in encrypted on-device storage:
+
+- Family member profiles you create (name, date of birth, blood type,
+  allergies, chronic conditions — only what you type)
+- Medical records, visits, prescriptions, documents and photos you add
+- Vaccination schedules and doses given
+- Vital-sign readings (blood pressure, glucose, weight, temperature,
+  SpO2, heart rate) typed by you or read from a device
+- Medication reminders and adherence history
+- Symptoms, pain-map entries, wellness, nutrition, sleep, mood, cycle
+  and growth entries
+- Pregnancy entries
+- The emergency medical ID card
+- Settings (language, theme, notification toggles)
+
+This data is **never** uploaded to TMK Group.
+
+## Permissions explained
 
 | Permission | Why Medimo needs it |
 |---|---|
-| Notifications, exact alarm, boot completed, vibrate, wake lock (Android) | Locally-scheduled medication and appointment reminders, re-armed after a reboot. |
-| Camera | Scanning a family-sharing QR code and photographing a lab report or document. |
-| Photo library (iPhone and iPad) | Picking a profile photo or a document image you choose. |
-| Location (while in use) | Finding hospitals, pharmacies and clinics near you, and filling a clinic's position. |
-| Bluetooth | Reading a blood pressure monitor, glucometer or scale you pair. |
-| Health (Apple HealthKit / Health Connect) | Reading and writing the health data types you allow. |
-| Face ID | Locking the App with your device's biometrics. |
-| Tracking (iPhone and iPad) | Personalised ads, only if you tap "Allow" on Apple's prompt. |
+| Notifications | Medication reminders, vaccine due dates, appointment alerts you set up. Generated on-device. |
+| Exact alarm (Android 12+) | Required by Android so a medication reminder fires at the exact minute. |
+| Camera | Scan a QR code; photograph a lab result or prescription for on-device text recognition. |
+| Bluetooth (scan / connect) | Read measurements from a blood pressure monitor, glucometer or smart scale. |
+| Location | Only for *Find nearby* and clinic addresses; on Android 11 and older it is also what the system demands before any Bluetooth scan. |
+| Health Connect / HealthKit (read) | Show steps, sleep, heart rate and other metrics you tick, beside your own entries. |
+| Internet | Ads (free tier only), the in-store purchase, and the *Find nearby* clinic search. |
+| Receive boot completed | Re-schedule your reminders after the phone restarts. |
+| Vibrate | Tactile feedback for reminders. |
+| Advertising ID (Android `AD_ID`) | AdMob ad personalisation on the free tier. Not used for subscribers; revocable in Android settings → Privacy → Ads. |
 
-You can revoke any permission in your device settings at any time. The App keeps working with fewer features.
+You can revoke any permission in your device settings at any time. The
+app keeps working with the matching feature switched off.
 
-## 4. Health platform integration (optional)
+## No accounts, no TMK servers
 
-If you enable Apple HealthKit, Google Fit or Health Connect, Medimo reads/writes data only with your explicit
-permission per data type. You can revoke this in your device settings at any time. Data syncs directly
-between your device and the platform — never through Medimo servers. Health platform data is never used for
-advertising and is never shared with the advertising SDK.
+**Medimo has no sign-in.** We do not run an auth server, a profile
+server or a sync server for this app. We cannot identify you, cannot see
+what you record, and cannot recover anything for you.
 
-## 5. Find nearby and maps
+When you move to a new phone, you bring your data with you using the
+backup feature below.
 
-When you search for hospitals, pharmacies or clinics nearby, the App sends the map position of the search
-(latitude, longitude and radius) — no name, profile or health record — to these services, in this order until
-one answers: overpass.tmkgroup.vn (our relay of OpenStreetMap data), overpass-api.de and
-overpass.kumi.systems. Results are cached on your device.
+## Backups (yours to save anywhere)
 
-The map is drawn from map.tmkgroup.vn inside Vietnam and tiles.openfreemap.org elsewhere. Directions and
-clinic links open Google Maps in your browser or the Google Maps app. Each of these services sees an ordinary
-web request (including your IP address) under its own privacy policy.
+Medimo can export your data to a backup file (Settings → Backup). The
+app opens the **system share sheet** and *you* choose where the file
+goes — your Files app, your own Drive, an email to yourself, a cable.
+TMK Group never receives a copy. To restore, import the file on the new
+device.
 
-## 6. Family sharing (optional)
+If you delete every copy you saved, the data is gone: we never had one.
 
-You can export profiles to a QR code or file and share them with family members. The transfer happens
-device-to-device or via a channel you choose (email, messaging). Medimo is not in the middle.
+## Third-party services
 
-## 7. Backups and Bluetooth devices
+Medimo talks to the following external services. **None of them is a TMK
+Group data server.**
 
-When you create a backup, the file is saved to your device storage or a location you pick (cloud drive, USB,
-share sheet). Protecting that backup is your responsibility.
+- **Google AdMob** (`*.googleadservices.com`, `*.doubleclick.net`,
+  `*.googlesyndication.com`) — free tier only, after the EU/UK consent
+  prompt. Sends the standard ad request (Advertising ID, language, app
+  version, approximate location from IP). Never your health data.
+  Privacy: <https://policies.google.com/privacy>.
+- **Google Play Billing** (Android) / **Apple StoreKit** (iOS) — for the
+  "Remove ads" subscription. Payment details never reach us. Privacy:
+  [Google](https://policies.google.com/privacy) ·
+  [Apple](https://www.apple.com/legal/privacy/).
+- **OpenStreetMap Overpass** (`overpass.tmkgroup.vn`,
+  `overpass-api.de`, `overpass.kumi.systems`) — only when you open *Find
+  nearby*. Sends a coordinate and a radius to look up clinics,
+  pharmacies and hospitals. No health data, no identifier.
+  Privacy: <https://osmfoundation.org/wiki/Privacy_Policy>.
+- **Google ML Kit text recognition** — runs **on the device**. The photo
+  of your lab result or prescription is not uploaded.
+- **Health Connect (Android) / HealthKit (iOS)** — the platform's own
+  health store on your device. Medimo reads only what you tick.
 
-When you connect a BLE device (blood pressure monitor, glucometer, scale), readings are stored locally as vital
-records. The pairing data stays on your device.
+We do **not** use Firebase Analytics, Crashlytics, Mixpanel, AppsFlyer,
+Branch, Adjust, Sentry or the Facebook SDK.
 
-## 8. Advertising (Google AdMob)
+## In-app purchases
 
-The free version shows a banner and offers an optional rewarded ad, using the Google Mobile Ads SDK (Google
-AdMob). According to Google, the SDK may collect:
+Medimo offers **one optional in-app purchase**:
 
-- coarse location, including location derived from the IP address;
-- a device ID, such as the advertising identifier;
-- advertising data (for example, ads you have seen) and product interactions (such as app launches and taps);
-- crash logs and performance data.
+- **Remove ads** (`com.tmkgroup.medimo.remove_ads_3m`), an
+  auto-renewing subscription that hides every ad in the app. It renews
+  until you cancel it in the Google Play or App Store subscription
+  settings.
+- The transaction is processed **entirely by Google Play Billing** on
+  Android or **Apple StoreKit** on iOS. Medimo never sees, receives or
+  stores your payment details, billing address or real name.
+- The app keeps a single flag on your device ("ads removed = yes/no").
+  Restoring on a new device works through Google's / Apple's own
+  "Restore purchases" mechanism.
 
-This data is used by Google for advertising, analytics and to improve the SDK. **It never includes your
-profiles, medical records, vitals, medications or any other health record** — those are not available to the
-SDK.
+## Data retention
 
-Where required by law (for example in the EEA, the UK and Switzerland), the App asks for your consent before
-ads are personalised, and you can change your choice at any time with the "Ad privacy options" button in
-the Profile tab. On iPhone and iPad, the advertising identifier is shared only if you tap "Allow" on Apple's
-App Tracking Transparency prompt. You can reset or delete your advertising ID in your device settings.
+- **On-device data**: kept until you delete it in the app or uninstall
+  the app.
+- **Backup files you saved elsewhere**: kept wherever you put them,
+  until you delete them there. We never had a copy.
+- **Ad-network data** (free tier only): retained by Google AdMob under
+  their own policy:
+  <https://policies.google.com/technologies/ads>.
 
-The **rewarded ad** is never forced: you tap it yourself in the Profile tab to turn ads off for 24 hours.
+## Children's privacy
 
-- Google's privacy policy: <https://policies.google.com/privacy>
-- How Google uses data from partner apps: <https://policies.google.com/technologies/partner-sites>
+Medimo is made for a whole household, and a parent may keep a child's
+vaccination record in it. That record stays on the parent's device; it
+is not transmitted to us and is not used for advertising. Because we
+operate no account and no server, we cannot identify any user. We do not
+knowingly collect data from children under 13 (or under 16 in the EU) —
+the only data leaving the device on the free tier is the anonymous
+AdMob ad request, which the "Remove ads" subscription turns off.
 
-## 9. Remove ads subscription
+## Medical disclaimer
 
-"Remove ads" is an optional subscription (3 months, renewing automatically until you cancel it in your store
-account settings). Payment is handled entirely by the Apple App Store or Google Play; **we never receive your
-payment details**. While the subscription is active the App does not start the advertising SDK at all, so none
-of the data in section 8 is collected.
+Medimo helps you organise health information. It is **not a medical
+device**, it does not diagnose, and it does not replace professional
+care. Always consult a licensed doctor for medical advice.
 
-## 10. Children
+## Your rights
 
-Profiles for minors are managed by you, the parent or guardian. Medimo does not knowingly collect information
-from children — all data is entered by you on your device.
+- **Access**: every record is visible inside the app.
+- **Export**: Settings → Backup produces a file containing your data.
+- **Delete (local)**: delete the record in the app, or uninstall the app
+  to remove everything.
+- **Delete (any copy you saved elsewhere)**: open the place you saved
+  the backup file and delete it there. We never had a copy.
+- **Correct**: edit any field directly inside the app.
+- **Object / restrict**: revoke any permission in your device settings.
+  Free-tier ad personalisation can be turned off in Android settings →
+  Privacy → Ads, in iOS Settings → Privacy → Tracking, or by taking the
+  "Remove ads" subscription.
 
-## 11. Your rights (GDPR / CCPA / LGPD)
+You can also email <dev@tmkgroup.vn> with any question — but we have
+nothing of yours to delete server-side, because we do not run a server
+for this app.
 
-You have the right to access, correct, export and delete your data. Because data is on your device, you can do
-all of this yourself: export from Backup, delete profiles or uninstall the app. There is no server account to
-delete.
+## Changes to this policy
 
-Questions about privacy: [trucmn@gmail.com](mailto:trucmn@gmail.com)
-
-## 12. Changes to this policy
-
-We will update the "Effective date" above and ship a new app version whenever this policy changes.
-
-</div>
-</article>
+We will update the "Last updated" date above whenever this policy
+changes. Material changes (a new third-party service, or a new category
+of data) will be highlighted in the app on the next update.
