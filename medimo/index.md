@@ -8,7 +8,7 @@ last_updated: 2026-11-13
 # Per-app metadata read by _layouts/app-policy.html and the landing page loop.
 app_name: Medimo
 app_subtitle: Family health records, vaccines, vitals and reminders
-app_id: vn.tmkgroup.tmk_medimo
+app_id: com.tmkgroup.medimo
 data_collected: "No health data reaches our servers. Everything stays in encrypted on-device storage. The free tier shows AdMob ads."
 order: 40
 ---
