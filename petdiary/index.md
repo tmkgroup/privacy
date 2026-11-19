@@ -10,15 +10,19 @@
 #  - lib/features/clinics|shops/screens/*.dart (geo: / tel: / website mo ra app khac)
 #  - lib/features/pets/screens/pet_detail_screen.dart (Chia se so suc khoe = share sheet he thong)
 #  - ios/Runner/Info.plist + android/app/src/main/AndroidManifest.xml (quyen)
+# 2026-11-20 (Claude, anh "nop duyet di" Apple): them CDN (lib/features/breed_ai/breed_model_store.dart,
+#  lib/features/learn/learn_content_store.dart), micro (lib/features/learn/emotion_screen.dart: startStream PCM,
+#  khong ghi file), thoi tiet (tmk_weather_package open_meteo_datasource.dart: api.open-meteo.com,
+#  geocoding-api.open-meteo.com, du phong api.bigdatacloud.net; LocationAccuracy.medium).
 layout: default
 permalink: /petdiary/
 title: "Pet Diary — Privacy Policy"
 description: "Privacy policy for Pet Diary: pet records, feeding, weight, vaccinations, vet visits, reminders and expenses."
-last_updated: 2026-11-16
+last_updated: 2026-11-20
 app_name: "Pet Diary"
 app_subtitle: "Pet Care Records"
 app_id: com.tmkgroup.pet
-data_collected: "No account. Your pets, photos and records stay on your device. Google AdMob ads collect device data; the Remove ads subscription turns them off."
+data_collected: "No account. Your pets, photos, sounds and records stay on your device. Weather uses approximate location only when you open it. Google AdMob ads collect device data; the Remove ads subscription turns them off."
 order: 141
 ---
 
@@ -28,7 +32,7 @@ order: 141
     <h1>Pet Diary — Privacy Policy</h1>
     <p class="app-meta">
       <span>Bundle ID: <code>com.tmkgroup.pet</code></span>
-      <span>Effective date: 2026-11-16</span>
+      <span>Effective date: 2026-11-20</span>
     </p>
   </header>
 
@@ -47,10 +51,13 @@ reminders are written to an encrypted database inside the App's own folder on yo
 uninstall the App, all of it goes with it; we cannot recover anything for you, because no copy ever
 reached us.
 
-Only two things use the network, and neither carries your pet records:
+These things use the network, and none of them carries your pet records:
 
 1. **Google AdMob ads** — free tier only (section 5).
 2. **Apple App Store / Google Play** — only when you buy or restore the Remove ads subscription.
+3. **Our download server** (`cdn-pet.tmkgroup.vn`) — recognition models and the lessons, body-language
+   guide and cat pain scale are downloaded the first time you open those features (section 7a).
+4. **Weather** — only when you open the Weather screen (section 7b).
 
 ## 2. No account
 
@@ -122,6 +129,30 @@ and never uploads a photo on its own.
 
 The App shares something only when **you** tap share or export (a `.tmkbak` backup or the pet health
 card as text). It then goes wherever you send it, under that app's own policy.
+
+## 7a. Downloads, photo and sound recognition
+
+The first time you open breed recognition, mood recognition from a photo or a sound, lessons, the
+body-language guide or the cat pain scale, the App downloads the files it needs from
+`cdn-pet.tmkgroup.vn`. The request carries nothing about you or your pets; like any web request, our
+CDN (Cloudflare) sees your IP address to send the file back. After that, these features work offline.
+
+- **Photos** you pick for recognition are analysed **on your phone**; they are never uploaded.
+- **Sound** recognition uses the microphone **only while you tap Record** (at most a few seconds). The
+  sound is analysed on your phone in memory, is not saved to a file and is never uploaded.
+
+## 7b. Weather and approximate location
+
+The Weather screen shows the forecast for your current area or for places you add. When you choose
+"My location", the App asks for **approximate location** (it never asks for precise location) and
+sends the coordinates to **Open-Meteo** (`api.open-meteo.com`) to get the forecast and the place name
+(`geocoding-api.open-meteo.com`; if that fails, `api.bigdatacloud.net`). Places you add are searched
+by the name you type. Nothing else about you is sent, and we do not receive or store your location.
+Saved places, the daily weather reminder and units stay in the App on your device.
+Their policies: [Open-Meteo](https://open-meteo.com/en/terms) ·
+[BigDataCloud](https://www.bigdatacloud.com/privacy-policy)
+
+You can deny location access and still use Weather by adding a place by name.
 
 ## 8. Subscription
 
