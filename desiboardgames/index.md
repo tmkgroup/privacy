@@ -1,6 +1,6 @@
 ---
 # Desi Board dùng layout "default" (KHÔNG "app-policy"): layout app-policy tự gắn _includes/master-policy.md,
-# trong đó ghi "never share it with advertisers", "suitable for general audiences", liên hệ dev@tmkgroup.vn —
+# trong đó ghi "never share it with advertisers", "suitable for general audiences", liên hệ contact@tmktechgroup.com —
 # sai với Desi Board (AdMob, 18+, liên hệ tmktechgroup@gmail.com). Nguồn từng ý: E:\Onsite\game\000-unity\Desi Board Games\PRIVACY_POLICY_DRAFT.md
 # (anh Truc duyệt 2026-10-23: "duyệt chính sách, ngày hiệu lực là hôm nay").
 layout: default

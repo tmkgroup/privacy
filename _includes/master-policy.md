@@ -5,7 +5,7 @@ app on this domain has its own data-practices section above; this
 general statement applies on top of it.
 
 - **Publisher**: TMK Group
-- **Contact**: [dev@tmkgroup.vn](mailto:dev@tmkgroup.vn)
+- **Contact**: [contact@tmktechgroup.com](mailto:contact@tmktechgroup.com)
 - **Domain**: [tmkgroup.vn](https://tmkgroup.vn)
 
 ### Our principles
@@ -62,4 +62,4 @@ clarify or expand your rights.
 ### Contact
 
 Questions, complaints, or data requests:
-[dev@tmkgroup.vn](mailto:dev@tmkgroup.vn).
+[contact@tmktechgroup.com](mailto:contact@tmktechgroup.com).

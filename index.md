@@ -34,4 +34,4 @@ bottom of each app-specific page above.
 
 ## Contact
 
-[dev@tmkgroup.vn](mailto:dev@tmkgroup.vn)
+[contact@tmktechgroup.com](mailto:contact@tmktechgroup.com)

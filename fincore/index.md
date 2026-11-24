@@ -152,7 +152,7 @@ the App. The backup feature exports all of it in one `.tmkbak` file. You can edi
 directly in the App, delete records, or uninstall the App to remove everything. Revoking a permission in your
 device settings leaves the App working with reduced features (for example, no reminders).
 
-You may also contact [dev@tmkgroup.vn](mailto:dev@tmkgroup.vn) with any question, but we cannot delete what
+You may also contact [contact@tmktechgroup.com](mailto:contact@tmktechgroup.com) with any question, but we cannot delete what
 we never had.
 
 ## 11. Changes to this policy

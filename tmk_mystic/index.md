@@ -140,7 +140,7 @@ personal data and operate no server, so we cannot identify a user's age.
 - **Object / restrict**: revoke a permission, withdraw ad consent in Settings,
   or remove your Gemini key — the rest of the app keeps working.
 
-Questions: [dev@tmkgroup.vn](mailto:dev@tmkgroup.vn). We cannot delete data we
+Questions: [contact@tmktechgroup.com](mailto:contact@tmktechgroup.com). We cannot delete data we
 never had.
 
 ## Changes to this policy

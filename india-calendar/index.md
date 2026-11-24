@@ -247,7 +247,7 @@ requests on the free tier (which can be disabled by buying Premium).
   personalisation can be turned off in Android settings → Privacy → Ads,
   in iOS Settings → Privacy → Tracking, or by purchasing Premium.
 
-You can also email <dev@tmkgroup.vn> for any question — but we have
+You can also email <contact@tmktechgroup.com> for any question — but we have
 nothing of yours to delete server-side because we do not run a server.
 
 ## Source code transparency

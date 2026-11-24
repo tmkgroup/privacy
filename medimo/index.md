@@ -223,7 +223,7 @@ care. Always consult a licensed doctor for medical advice.
   Privacy → Ads, in iOS Settings → Privacy → Tracking, or by taking the
   "Remove ads" subscription.
 
-You can also email <dev@tmkgroup.vn> with any question — but we have
+You can also email <contact@tmktechgroup.com> with any question — but we have
 nothing of yours to delete server-side, because we do not run a server
 for this app.
 
